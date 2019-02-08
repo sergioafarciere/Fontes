@@ -1,7 +1,6 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  BorderIcons = [biMinimize, biMaximize]
   Caption = 'Gest'#227'o Escolar'
   ClientHeight = 299
   ClientWidth = 635
@@ -13,7 +12,6 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   Menu = mMenuPrincipal
   OldCreateOrder = False
-  WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
   object mMenuPrincipal: TMainMenu
@@ -25,7 +23,6 @@ object frmPrincipal: TfrmPrincipal
       end
       object tmCadAlunoPrincipal: TMenuItem
         Caption = 'Aluno'
-        OnClick = tmCadAlunoPrincipalClick
       end
       object tmCadProfessorPrincipal: TMenuItem
         Caption = 'Professor'
@@ -33,10 +30,6 @@ object frmPrincipal: TfrmPrincipal
       object tmCadDisciplicaPrincipal: TMenuItem
         Caption = 'Disciplina'
       end
-    end
-    object tmSairPrincipal: TMenuItem
-      Caption = 'Sair'
-      OnClick = tmSairPrincipalClick
     end
   end
 end

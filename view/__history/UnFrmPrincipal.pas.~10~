@@ -14,10 +14,8 @@ type
     tmCadAlunoPrincipal: TMenuItem;
     tmCadProfessorPrincipal: TMenuItem;
     tmCadDisciplicaPrincipal: TMenuItem;
-    tmSairPrincipal: TMenuItem;
     procedure tmCadEscolaPrincipalClick(Sender: TObject);
     procedure tmCadAlunoPrincipalClick(Sender: TObject);
-    procedure tmSairPrincipalClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,11 +54,6 @@ finally
 FreeAndNil(frmCadEscola);
 end;
 
-end;
-
-procedure TfrmPrincipal.tmSairPrincipalClick(Sender: TObject);
-begin
-  Close;
 end;
 
 end.

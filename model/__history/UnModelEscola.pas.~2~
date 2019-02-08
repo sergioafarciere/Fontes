@@ -11,7 +11,9 @@ type TEscola = class(TAgente)
        { protected declarations }
      public
        { public declarations }
-
+       
+     published
+       { published declarations }
      end;
 
 
