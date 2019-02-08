@@ -1,0 +1,40 @@
+unit UnModelAgente;
+
+interface
+
+type TAgente = class
+  private
+    function getNome: string;
+    procedure setNome(const Value: string);
+    function getID: Integer;
+    procedure setID(const Value: Integer);
+  public
+    property ID : Integer read getID write setID;
+    property Nome : string read getNome write setNome;
+end;
+
+implementation
+
+{ TAgente }
+
+function TAgente.getID: Integer;
+begin
+  getID := ID;
+end;
+
+function TAgente.getNome: string;
+begin
+  getNome := Nome;
+end;
+
+procedure TAgente.setID(const Value: Integer);
+begin
+  Value := ID;
+end;
+
+procedure TAgente.setNome(const Value: string);
+begin
+  Value := Nome;
+end;
+
+end.

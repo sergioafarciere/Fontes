@@ -1,0 +1,23 @@
+unit UnModelAluno;
+
+interface
+
+uses UnModelAgente;
+
+type TAluno = class(TAgente)
+     private
+       { private declarations }
+     protected
+       { protected declarations }
+     public
+       { public declarations }
+       
+     published
+       { published declarations }
+     end;
+
+implementation
+
+
+
+end.

@@ -1,0 +1,18 @@
+unit UnModelAgente;
+
+interface
+
+type TAgente = class
+  private
+    FID: Integer;
+    FNome: string;
+  public
+    property ID : Integer read FID write FID;
+    property Nome : string read FNome write FNome;
+end;
+
+implementation
+
+{ TAgente }
+
+end.
