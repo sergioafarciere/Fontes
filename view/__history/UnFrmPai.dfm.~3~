@@ -1,11 +1,9 @@
 object frmPai: TfrmPai
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
   Caption = 'Formulario Pai'
-  ClientHeight = 461
-  ClientWidth = 740
+  ClientHeight = 451
+  ClientWidth = 730
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -32,62 +30,51 @@ object frmPai: TfrmPai
   object pnlTopPai: TPanel
     Left = 0
     Top = 0
-    Width = 740
+    Width = 730
     Height = 57
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
+    ExplicitWidth = 679
     object btnIncluir: TBitBtn
-      Left = 455
+      Left = 501
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&NOVO'
+      Caption = 'btnIncluir'
       TabOrder = 0
     end
     object btnAlterar: TBitBtn
-      Left = 511
+      Left = 557
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&ALTERAR'
+      Caption = 'btnAlterar'
       TabOrder = 1
     end
     object btnExcluir: TBitBtn
-      Left = 567
+      Left = 613
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&EXCLUIR'
+      Caption = 'btnExcluir'
       TabOrder = 2
     end
     object btnCancelar: TBitBtn
-      Left = 623
+      Left = 669
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&CANCELAR'
+      Caption = 'btnCancel'
       TabOrder = 3
-    end
-    object btnSair: TBitBtn
-      Left = 679
-      Top = 7
-      Width = 57
-      Height = 41
-      Caption = '&SAIR'
-      TabOrder = 4
     end
   end
   object pnlBottonPai: TPanel
     Left = 0
-    Top = 442
-    Width = 740
+    Top = 432
+    Width = 730
     Height = 19
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 432
-    ExplicitWidth = 730
   end
   object edtCodigoPai: TEdit
     Left = 24

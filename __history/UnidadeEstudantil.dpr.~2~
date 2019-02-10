@@ -8,8 +8,7 @@ uses
   UnModelEscola in 'model\UnModelEscola.pas',
   UnFrmPai in 'view\UnFrmPai.pas' {frmPai},
   UnFrmCadAluno in 'view\UnFrmCadAluno.pas' {frmCadAluno},
-  UnFrmCadEscola in 'view\UnFrmCadEscola.pas' {frmCadEscola},
-  UnConexaoSql in 'dao\UnConexaoSql.pas' {dmConexao: TDataModule};
+  UnFrmCadEscola in 'view\UnFrmCadEscola.pas' {frmCadEscola};
 
 {$R *.res}
 
@@ -20,6 +19,5 @@ begin
   Application.CreateForm(TfrmPai, frmPai);
   Application.CreateForm(TfrmCadAluno, frmCadAluno);
   Application.CreateForm(TfrmCadEscola, frmCadEscola);
-  Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.

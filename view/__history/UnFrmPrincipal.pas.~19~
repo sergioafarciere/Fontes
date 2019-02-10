@@ -38,13 +38,7 @@ var
   sqlConexao : TdmConexao;
 begin
 sqlConexao := TdmConexao.Create(Self);
-try
-  sqlConexao.sqlConexao.SQLHourGlass := True;
-  sqlConexao.sqlConexao.Connected := True;
-finally
-FreeAndNil(sqlConexao);
-end;
-
+sqlConexao.sqlConexao.SQLHourGlass(True)
 end;
 
 procedure TfrmPrincipal.tmCadAlunoPrincipalClick(Sender: TObject);

@@ -15,10 +15,10 @@ type
     tmCadProfessorPrincipal: TMenuItem;
     tmCadDisciplicaPrincipal: TMenuItem;
     tmSairPrincipal: TMenuItem;
+    constructor conexaoSQL(Sender: TObject);
     procedure tmCadEscolaPrincipalClick(Sender: TObject);
     procedure tmCadAlunoPrincipalClick(Sender: TObject);
     procedure tmSairPrincipalClick(Sender: TObject);
-    procedure conexaoSQL(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,18 +33,11 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPrincipal.conexaoSQL(Sender: TObject);
+constructor TfrmPrincipal.conexaoSQL(Sender: TObject);
 var
   sqlConexao : TdmConexao;
 begin
-sqlConexao := TdmConexao.Create(Self);
-try
-  sqlConexao.sqlConexao.SQLHourGlass := True;
-  sqlConexao.sqlConexao.Connected := True;
-finally
-FreeAndNil(sqlConexao);
-end;
-
+  sqlConexao := TdmConexao.Create(Self);
 end;
 
 procedure TfrmPrincipal.tmCadAlunoPrincipalClick(Sender: TObject);

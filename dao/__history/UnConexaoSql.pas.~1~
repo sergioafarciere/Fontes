@@ -1,0 +1,23 @@
+unit UnConexaoSql;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TdmConexao = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dmConexao: TdmConexao;
+
+implementation
+
+{$R *.dfm}
+
+end.

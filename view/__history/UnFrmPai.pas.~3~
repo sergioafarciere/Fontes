@@ -19,7 +19,6 @@ type
     edtCodigoPai: TEdit;
     Label1: TLabel;
     edtNomePai: TEdit;
-    btnSair: TBitBtn;
   private
     { Private declarations }
   public

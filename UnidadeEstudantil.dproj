@@ -29,6 +29,10 @@
     <DelphiCompile Include="UnidadeEstudantil.dpr">
       <MainSource>MainSource</MainSource>
     </DelphiCompile>
+    <DCCReference Include="dao\UnConexaoSql.pas">
+      <Form>dmConexao</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
     <DCCReference Include="model\UnModelAgente.pas" />
     <DCCReference Include="model\UnModelAluno.pas" />
     <DCCReference Include="model\UnModelEscola.pas" />

@@ -43,7 +43,7 @@ object frmPai: TfrmPai
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&NOVO'
+      Caption = 'btnIncluir'
       TabOrder = 0
     end
     object btnAlterar: TBitBtn
@@ -51,7 +51,7 @@ object frmPai: TfrmPai
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&ALTERAR'
+      Caption = 'btnAlterar'
       TabOrder = 1
     end
     object btnExcluir: TBitBtn
@@ -59,7 +59,7 @@ object frmPai: TfrmPai
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&EXCLUIR'
+      Caption = 'btnExcluir'
       TabOrder = 2
     end
     object btnCancelar: TBitBtn
@@ -67,7 +67,7 @@ object frmPai: TfrmPai
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&CANCELAR'
+      Caption = 'btnCancel'
       TabOrder = 3
     end
     object btnSair: TBitBtn
@@ -75,7 +75,7 @@ object frmPai: TfrmPai
       Top = 7
       Width = 57
       Height = 41
-      Caption = '&SAIR'
+      Caption = 'btnSair'
       TabOrder = 4
     end
   end
