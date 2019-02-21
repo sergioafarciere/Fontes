@@ -1,0 +1,16 @@
+unit UnControllerAgente;
+
+interface
+
+type
+  TAgenteController = class
+     private
+       { private declarations }
+     public
+     function Excluir : Boolean; virtual;
+     function Gravar : Boolean; virtual;
+     end;
+
+implementation
+
+end.

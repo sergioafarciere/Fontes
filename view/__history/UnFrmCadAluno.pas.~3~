@@ -1,0 +1,24 @@
+unit UnFrmCadAluno;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UnFrmPai, DB, ExtCtrls, StdCtrls, Buttons;
+
+type
+  TfrmPai1 = class(TfrmPai)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPai1: TfrmPai1;
+
+implementation
+
+{$R *.dfm}
+
+end.

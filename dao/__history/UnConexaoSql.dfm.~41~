@@ -1,0 +1,82 @@
+object dmConexao: TdmConexao
+  OldCreateOrder = False
+  Height = 402
+  Width = 685
+  object sqlConexao: TSQLConnection
+    ConnectionName = 'MSSQLConnection'
+    DriverName = 'MSSQL'
+    GetDriverFunc = 'getSQLDriverMSSQL'
+    LibraryName = 'dbxmss30.dll'
+    LoginPrompt = False
+    Params.Strings = (
+      'SchemaOverride=sa.dbo'
+      'DriverName=MSSQL'
+      'HostName=DESKTOP-G957N5G\POSEIDON'
+      'DataBase=ESCOLA'
+      'User_Name=sa'
+      'Password=1234'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'MSSQL TransIsolation=ReadCommited'
+      'OS Authentication=False'
+      'Prepare SQL=False')
+    VendorLib = 'oledb'
+    Connected = True
+    Left = 320
+    Top = 8
+  end
+  object dstSelectEsola: TSQLDataSet
+    SchemaName = 'dbo'
+    CommandText = 'select ID,ESCNOME from ESCOLA where ESCNOME like :nome'
+    DbxCommandType = 'Dbx.SQL'
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftString
+        Name = 'Nome'
+        ParamType = ptInput
+      end>
+    SQLConnection = sqlConexao
+    Left = 48
+    Top = 40
+  end
+  object SQLDataSetInserir: TSQLDataSet
+    SchemaName = 'dbo'
+    CommandText = 'insert into ESCOLA (ID,ESCNOME) values (:ID, :ESCNOME)'
+    DbxCommandType = 'Dbx.SQL'
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ESCNOME'
+        ParamType = ptInput
+      end>
+    SQLConnection = sqlConexao
+    Left = 160
+    Top = 40
+  end
+  object dspSelect: TDataSetProvider
+    DataSet = dstSelectEsola
+    Left = 48
+    Top = 112
+  end
+  object cdsSelect: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftString
+        Name = 'Nome'
+        ParamType = ptInput
+      end>
+    ProviderName = 'dspSelect'
+    Left = 48
+    Top = 184
+  end
+end

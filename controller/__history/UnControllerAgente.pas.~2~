@@ -1,0 +1,15 @@
+unit UnControllerAgente;
+
+interface
+
+type
+  TAgenteController = class
+     private
+       { private declarations }
+     public
+     
+     end;
+
+implementation
+
+end.

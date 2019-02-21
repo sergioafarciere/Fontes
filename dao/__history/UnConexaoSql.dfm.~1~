@@ -1,5 +1,0 @@
-object dmConexao: TdmConexao
-  OldCreateOrder = False
-  Height = 402
-  Width = 685
-end

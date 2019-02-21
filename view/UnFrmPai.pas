@@ -4,22 +4,23 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons;
+  Dialogs, ExtCtrls, StdCtrls, Buttons, UnModelAgente, UnConexaoSql, DB, UnModelEscola;
 
 type
   TfrmPai = class(TForm)
     pnlTopPai: TPanel;
-    btnIncluir: TBitBtn;
+    btnNovo: TBitBtn;
     btnAlterar: TBitBtn;
     btnExcluir: TBitBtn;
     btnCancelar: TBitBtn;
     pnlBottonPai: TPanel;
     tmnPai: TTimer;
-    lblCodigoPai: TLabel;
-    edtCodigoPai: TEdit;
-    Label1: TLabel;
-    edtNomePai: TEdit;
+    lblCodigo: TLabel;
+    edtCodigo: TEdit;
+    lblNome: TLabel;
+    edtNome: TEdit;
     btnSair: TBitBtn;
+    btnGravar: TBitBtn;
   private
     { Private declarations }
   public
@@ -32,5 +33,6 @@ var
 implementation
 
 {$R *.dfm}
+
 
 end.

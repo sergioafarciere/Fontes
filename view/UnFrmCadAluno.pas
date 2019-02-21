@@ -3,8 +3,8 @@ unit UnFrmCadAluno;
 interface
 
 uses
-  UnFrmPai, Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UnFrmPai, DB, ExtCtrls, StdCtrls, Buttons;
 
 type
   TfrmCadAluno = class(TfrmPai)
@@ -18,8 +18,6 @@ var
   frmCadAluno: TfrmCadAluno;
 
 implementation
-
-
 
 {$R *.dfm}
 

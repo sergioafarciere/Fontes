@@ -29,6 +29,8 @@
     <DelphiCompile Include="UnidadeEstudantil.dpr">
       <MainSource>MainSource</MainSource>
     </DelphiCompile>
+    <DCCReference Include="controller\UnControllerAgente.pas" />
+    <DCCReference Include="controller\UnControllerEscola.pas" />
     <DCCReference Include="dao\UnConexaoSql.pas">
       <Form>dmConexao</Form>
       <DesignClass>TDataModule</DesignClass>
@@ -44,6 +46,12 @@
     </DCCReference>
     <DCCReference Include="view\UnFrmPai.pas">
       <Form>frmPai</Form>
+    </DCCReference>
+    <DCCReference Include="view\UnFrmPesqEscola.pas">
+      <Form>frmPesqEscola</Form>
+    </DCCReference>
+    <DCCReference Include="view\UnFrmPesqPai.pas">
+      <Form>frmPesqPai</Form>
     </DCCReference>
     <DCCReference Include="view\UnFrmPrincipal.pas">
       <Form>frmPrincipal</Form>

@@ -1,0 +1,22 @@
+unit UnModelEscola;
+
+interface
+
+uses UnModelAgente;
+
+type TEscola = class(TAgente)
+     private
+       { private declarations }
+     protected
+       { protected declarations }
+     public
+      function Excluir :Boolean; override;
+
+     end;
+
+
+implementation
+
+
+
+end.

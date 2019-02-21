@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, UnFrmCadAluno, UnFrmCadEscola, UnModelAluno, UnModelEscola, UnConexaoSql;
+  Dialogs, Menus, UnFrmCadAluno, UnFrmCadEscola, UnModelAluno, UnModelEscola, UnConexaoSql, UnFrmPesqEscola;
 
 type
   TfrmPrincipal = class(TForm)
@@ -15,10 +15,13 @@ type
     tmCadProfessorPrincipal: TMenuItem;
     tmCadDisciplicaPrincipal: TMenuItem;
     tmSairPrincipal: TMenuItem;
+    Pesquisar1: TMenuItem;
+    Escola1: TMenuItem;
     procedure tmCadEscolaPrincipalClick(Sender: TObject);
     procedure tmCadAlunoPrincipalClick(Sender: TObject);
     procedure tmSairPrincipalClick(Sender: TObject);
     procedure conexaoSQL(Sender: TObject);
+    procedure Escola1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,12 +42,24 @@ var
 begin
 sqlConexao := TdmConexao.Create(Self);
 try
-  sqlConexao.sqlConexao.SQLHourGlass := True;
   sqlConexao.sqlConexao.Connected := True;
 finally
 FreeAndNil(sqlConexao);
 end;
 
+end;
+
+procedure TfrmPrincipal.Escola1Click(Sender: TObject);
+var
+  frmPesqEscola : TfrmPesqEscola;
+begin
+try
+  frmPesqEscola := TfrmPesqEscola.Create(nil);
+  frmPesqEscola.ShowModal;
+finally
+FreeAndNil(frmPesqEscola);
+end;
+  
 end;
 
 procedure TfrmPrincipal.tmCadAlunoPrincipalClick(Sender: TObject);

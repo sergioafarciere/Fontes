@@ -1,0 +1,31 @@
+unit UnEscolaDAO;
+
+interface
+
+uses SysUtils, WideStrings, FMTBcd, DB, SqlExpr, DBClient, Provider, Classes,UnConexaoSql;
+
+type
+TEscolaDAO = class
+     private
+
+     public
+        function Obter : TSQLTable;
+     end;
+
+implementation
+
+
+
+{ TEscolaDAO }
+
+function TEscolaDAO.Obter: TSQLTable;
+var
+ Qry : TSQLTable;
+ SqlConn : TdmConexao;
+begin
+   Qry := TSQLTable.Create;;
+  SqlConn := TdmConexao.Create(nil);
+end;
+end;
+
+end.

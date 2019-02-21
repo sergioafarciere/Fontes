@@ -1,0 +1,61 @@
+unit UnControllerEscola;
+
+interface
+
+uses UnModelEscola, UnConexaoSql, SysUtils ;
+
+type
+  TEscolaController = class
+     private
+       { private declarations }
+     public
+       constructor Create;
+       destructor Destroy; override;
+       function Inserir(oEscola: TEscola; var sErro: string): Boolean;
+       function Alterar(oEscola: TEscola; var sErro: string): Boolean;
+       function Excluir(iCodigo: Integer; var sErro: string): Boolean;
+       procedure Pesquisar(sNome: string);
+       procedure CarregarEscola(oEscola : TEscola; iCodigo: Integer);
+
+     end;
+
+implementation
+
+{ TEscolaController }
+
+function TEscolaController.Alterar(oEscola: TEscola;var sErro: string): Boolean;
+begin
+  Result := dmConexao.Alterar(oEscola,sErro);
+end;
+
+procedure TEscolaController.CarregarEscola(oEscola: TEscola; iCodigo: Integer);
+begin
+  dmConexao.CarregarDados(oEscola,iCodigo);
+end;
+
+constructor TEscolaController.Create;
+begin
+  dmConexao := TdmConexao.Create(nil);
+end;
+
+destructor TEscolaController.Destroy;
+begin
+  freeand
+end;
+
+function TEscolaController.Excluir(iCodigo: Integer; var sErro: string): Boolean;
+begin
+  Result := dmConexao.Excluir(iCodigo,sErro);
+end;
+
+function TEscolaController.Inserir(oEscola: TEscola; var sErro: string): Boolean;
+begin
+ Result := dmConexao.Inserir(oEscola,sErro);
+end;
+
+procedure TEscolaController.Pesquisar(sNome: string);
+begin
+  dmConexao.Pesquisar(sNome);
+end;
+
+end.

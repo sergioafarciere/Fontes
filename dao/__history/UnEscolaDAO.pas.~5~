@@ -1,0 +1,19 @@
+unit UnEscolaDAO;
+
+interface
+
+uses UnConexaoSql;
+
+type
+TEscolaDAO = class
+     private
+
+     public
+
+     end;
+
+implementation
+
+
+
+end.

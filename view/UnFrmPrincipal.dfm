@@ -36,6 +36,13 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Disciplina'
       end
     end
+    object Pesquisar1: TMenuItem
+      Caption = '&Pesquisar'
+      object Escola1: TMenuItem
+        Caption = 'Escola'
+        OnClick = Escola1Click
+      end
+    end
     object tmSairPrincipal: TMenuItem
       Caption = 'Sair'
       OnClick = tmSairPrincipalClick
