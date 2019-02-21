@@ -28,24 +28,40 @@ object dmConexao: TdmConexao
   end
   object dstSelect: TSQLDataSet
     SchemaName = 'dbo'
-    CommandText = 'select * from ESCOLA where (ESCNOME like :ESCNOME)'
+    CommandText = 'select * from ESCOLA'
     DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <
       item
-        DataType = ftUnknown
+        DataType = ftString
         Name = 'ESCNOME'
         ParamType = ptInput
       end>
     SQLConnection = sqlConexao
-    Left = 48
+    Left = 24
     Top = 80
+    object dstSelectID: TIntegerField
+      FieldName = 'ID'
+    end
+    object dstSelectESCNOME: TStringField
+      FieldName = 'ESCNOME'
+      Size = 30
+    end
+    object dstSelectESCTIP: TStringField
+      FieldName = 'ESCTIP'
+      Size = 8
+    end
+    object dstSelectESCCPFCNPJ: TStringField
+      FieldName = 'ESCCPFCNPJ'
+      Size = 14
+    end
   end
   object dstInsert: TSQLDataSet
-    SchemaName = 'dbo'
+    SchemaName = 'sa'
     CommandText = 
       'INSERT INTO [dbo].[ESCOLA]'#13#10'           ([ID]'#13#10'           ,[ESCNO' +
-      'ME])'#13#10'     VALUES'#13#10'           (:ID ,:ESCNOME)'
+      'ME]'#13#10'           ,[ESCTIP]'#13#10'           ,[ESCCPFCNPJ])'#13#10'     VALUE' +
+      'S'#13#10'           (:ID ,:ESCNOME,:ESCTIP,:ESCCPFCNPJ)'
     DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <
@@ -58,9 +74,19 @@ object dmConexao: TdmConexao
         DataType = ftUnknown
         Name = 'ESCNOME'
         ParamType = ptInput
+      end
+      item
+        DataType = ftUnknown
+        Name = 'ESCTIP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftUnknown
+        Name = 'ESCCPFCNPJ'
+        ParamType = ptInput
       end>
     SQLConnection = sqlConexao
-    Left = 136
+    Left = 120
     Top = 80
   end
   object dstUpdate: TSQLDataSet
@@ -82,7 +108,7 @@ object dmConexao: TdmConexao
         ParamType = ptInput
       end>
     SQLConnection = sqlConexao
-    Left = 216
+    Left = 200
     Top = 80
   end
   object dstDelete: TSQLDataSet
@@ -97,12 +123,12 @@ object dmConexao: TdmConexao
         ParamType = ptInput
       end>
     SQLConnection = sqlConexao
-    Left = 328
+    Left = 272
     Top = 80
   end
   object dspSelect: TDataSetProvider
     DataSet = dstSelect
-    Left = 48
+    Left = 24
     Top = 152
   end
   object cdsSelect: TClientDataSet
@@ -114,7 +140,7 @@ object dmConexao: TdmConexao
         ParamType = ptInput
       end>
     ProviderName = 'dspSelect'
-    Left = 48
+    Left = 24
     Top = 224
     object cdsSelectID: TIntegerField
       FieldName = 'ID'
@@ -122,6 +148,14 @@ object dmConexao: TdmConexao
     object cdsSelectESCNOME: TStringField
       FieldName = 'ESCNOME'
       Size = 30
+    end
+    object cdsSelectESCTIP: TStringField
+      FieldName = 'ESCTIP'
+      Size = 8
+    end
+    object cdsSelectESCCPFCNPJ: TStringField
+      FieldName = 'ESCCPFCNPJ'
+      Size = 14
     end
   end
 end

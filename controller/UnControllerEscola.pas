@@ -32,6 +32,7 @@ procedure TEscolaController.CarregarEscola(oEscola: TEscola; iCodigo: Integer);
 begin
   dmConexao.CarregarDados(oEscola,iCodigo);
 end;
+
 {$ENDREGION}
 
 {$REGION'CONTROLLER EXCLUIR'}
@@ -46,6 +47,8 @@ function TEscolaController.Inserir(oEscola: TEscola; var sErro: string): Boolean
 begin
  Result := dmConexao.Inserir(oEscola,sErro);
 end;
+
+
 {$ENDREGION}
 
 {$REGION'CONTROLLER PESQUISAR'}
@@ -61,10 +64,6 @@ begin
   Result := dmConexao.gerarId;
 end;
 {$ENDREGION}
-
-
-
-
 
 
 end.

@@ -8,34 +8,38 @@ type TAgente = class
   private
     FID: Integer;
     FNome: string;
+    FTPessoa: string;
+    FCPF_CNPJ: string;
     procedure setNome(const Value: string);
+    procedure SetTPessoa(const Value: string);
+    procedure SetCPF_CNPJ(const Value: string);
   public
-    function Excluir : Boolean; virtual;
-    function Gravar : Boolean; virtual;
     property ID : Integer read FID write FID;
     property Nome : string read FNome write setNome;
+    property TPessoa : string read FTPessoa write SetTPessoa;
+    property CPF_CNPJ : string read FCPF_CNPJ write SetCPF_CNPJ;
 end;
 
 implementation
 
 { TAgente }
 
-function TAgente.Excluir: Boolean;
+procedure TAgente.SetCPF_CNPJ(const Value: string);
 begin
-  Result := True;
-end;
-
-function TAgente.Gravar: Boolean;
-begin
-  Result := True;
+  FCPF_CNPJ := Value;
 end;
 
 procedure TAgente.setNome(const Value: string);
 begin
-if Value = EmptyStr then
-  raise Exception.Create('Valor não pode ser vázio')
-else
+//if Value = EmptyStr then
+//  raise Exception.Create('Valor não pode ser vázio')
+//else
   FNome := Value;
+end;
+
+procedure TAgente.SetTPessoa(const Value: string);
+begin
+  FTPessoa := Value;
 end;
 
 end.

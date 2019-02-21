@@ -5,33 +5,31 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UnFrmPai, DB, ExtCtrls, StdCtrls, Buttons, UnModelEscola, UnConexaoSql, UnControllerEscola,
-  Grids, DBGrids, FMTBcd, SqlExpr;
+  Grids, DBGrids, FMTBcd, SqlExpr, Mask;
 
 type
   TOperacao = (opIncluir, opAlterar, opNavegar, opExcluir, opGravar, opCancelar, opSair);
   TfrmCadEscola = class(TfrmPai)
-    DBGrid1: TDBGrid;
-    DataSource1: TDataSource;
     procedure btnNovoClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
-    procedure edtCodigoKeyPress(Sender: TObject; var Key: Char);
     procedure btnSairClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure edtCodigoKeyPress(Sender: TObject; var Key: Char);
+    procedure btnExcluirClick(Sender: TObject);
   private
     FOperacao: TOperacao;
     procedure Novo;
     procedure Alterar;
     procedure Gravar;
-    procedure CarregarEscola(oEscola :TEscola;iCodigo: Integer);
+    procedure CarregarEscola;
     procedure habilitarComandos(aOperacao : TOperacao);
     procedure Insert;
     procedure Update;
     procedure Delete;
-
   end;
 
 var
@@ -76,7 +74,7 @@ begin
   opNavegar:
   begin
     edtCodigo.Enabled := True;
-    edtNome.Enabled := True;
+    edtNome.Enabled := False;
     btnNovo.Enabled := True;
     btnExcluir.Enabled := True;
     btnAlterar.Enabled := True;
@@ -89,9 +87,8 @@ end;
 
 procedure TfrmCadEscola.edtCodigoKeyPress(Sender: TObject; var Key: Char);
 begin
-  if (Key = #13) and (edtCodigo.Text <> EmptyStr) then
-  Key := #0;
-  CarregarEscola(TEscola.Create,StrToInt(edtCodigo.Text));
+  if (Key = #13) and (edtCodigo.Text <> EmptyStr)  then
+  CarregarEscola;
 end;
 
 {$endregion}
@@ -107,7 +104,12 @@ end;
 procedure TfrmCadEscola.btnCancelarClick(Sender: TObject);
 begin
   habilitarComandos(opNavegar);
+end;
 
+procedure TfrmCadEscola.btnExcluirClick(Sender: TObject);
+begin
+  Delete;
+  habilitarComandos(opExcluir);
 end;
 
 procedure TfrmCadEscola.btnGravarClick(Sender: TObject);
@@ -135,7 +137,6 @@ begin
   try
     FOperacao := opIncluir;
     edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
-    dmConexao.cdsSelect.Open;
   finally
   FreeAndNil(oEscolaController);
   end;
@@ -153,20 +154,26 @@ begin
       opAlterar: Update;
   end;
 end;
-
 {$endregion}
 
-{$region'METODOS_CRUD'}
+{$region'OBTER DADOS PARA METODOS CRUD'}
 //CARREGAR DADOS
-procedure TfrmCadEscola.CarregarEscola(oEscola :TEscola;iCodigo: Integer);
+procedure TfrmCadEscola.CarregarEscola;
 var
+  oEscola : TEscola;
   oEscolaController : TEscolaController;
+  iCodigo: Integer;
 begin
+  oEscola := TEscola.Create;
   oEscolaController := TEscolaController.Create;
+  iCodigo := StrToInt(edtCodigo.Text);
   try
-    oEscolaController.CarregarEscola(oEscola,dmConexao.cdsSelect.FieldByName('ID').AsInteger);
+    oEscolaController.CarregarEscola(oEscola,iCodigo);
     edtCodigo.Text := IntToStr(oEscola.ID);
     edtNome.Text := oEscola.Nome;
+    if StrToInt(edtCodigo.Text) = 0 then
+      ShowMessage('Escola não encontrada!');
+    limparCampos;
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -185,15 +192,19 @@ begin
   try
     oEscola.ID := StrToInt(edtCodigo.Text);
     oEscola.Nome := edtNome.Text;
+    oEscola.TPessoa := cbxTipoPessoa.Text;
+    oEscola.CPF_CNPJ := mskCPFCNPJ.Text;
     if not oEscolaCotroller.Inserir(oEscola,sErro) then
       raise Exception.Create(sErro)
     else
     ShowMessage('Escola cadastrada com sucesso!');
+    limparCampos;
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaCotroller);
   end;
 end;
+
 
 //ALTERAR UM CADASTRO
 procedure TfrmCadEscola.Update;
@@ -205,6 +216,7 @@ begin
   oEscola := TEscola.Create;
   oEscolaController := TEscolaController.Create;
   try
+    oEscola.ID := StrToInt(edtCodigo.Text);
     oEscola.Nome := edtNome.Text;
     if not oEscolaController.Alterar(oEscola,sErro) then
       raise Exception.Create(sErro)
@@ -225,21 +237,22 @@ begin
   FOperacao := opExcluir;
   oEscolaController := TEscolaController.Create;
   try
-    if edtNome.Text <> EmptyStr {(dmConexao.cdsSelect.RecordCount > 0 )} then
     begin
       if MessageDlg('Deseja realmente excluir este registro?',mtConfirmation, [mbYes, mbNo], 0) = IDYES then
       begin
-        if not oEscolaController.Excluir(dmConexao.cdsSelectID.AsInteger, sErro) then
-        raise Exception.Create(sErro);
-        oEscolaController.Pesquisar(edtCodigo.Text);
-      end;
+        if not oEscolaController.Excluir(StrToInt(edtCodigo.Text), sErro) then
+        raise Exception.Create(sErro)
+        else
+        ShowMessage('Escola excluída com sucesso!');
+        limparCampos;
+     end;
     end
-    else
-      raise Exception.Create('Não há nenhum dado as ser excluído');
   finally
   FreeAndNil(oEscolaController);
   end;
 end;
+
+
 {$endregion}
 
 
