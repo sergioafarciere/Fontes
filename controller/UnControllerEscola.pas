@@ -45,7 +45,7 @@ end;
 {$REGION'CONTROLLER INSERIR'}
 function TEscolaController.Inserir(oEscola: TEscola; var sErro: string): Boolean;
 begin
- Result := dmConexao.Inserir(oEscola,sErro);
+  Result := dmConexao.Inserir(oEscola,sErro);
 end;
 
 

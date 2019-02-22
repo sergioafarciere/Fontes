@@ -1,0 +1,91 @@
+unit UnModelAgente;
+
+interface
+
+uses SysUtils;
+
+type TAgente = class
+  private
+    FID: Integer;
+    FNome: string;
+    FTPessoa: string;
+    FCPF_CNPJ: string;
+    FDataCadastro: TDateTime;
+    FCEP: Integer;
+    FUF: string;
+    FEndereco: string;
+    FNumero: Integer;
+    procedure setNome(const Value: string);
+    procedure SetTPessoa(const Value: string);
+    procedure SetCPF_CNPJ(const Value: string);
+    procedure SetCEP(const Value: Integer);
+    procedure SetUF(const Value: string);
+    procedure SetEndereco(const Value: string);
+    procedure SetNumero(const Value: Integer);
+  public
+    property ID : Integer read FID write FID;
+    property Nome : string read FNome write setNome;
+    property TPessoa : string read FTPessoa write SetTPessoa;
+    property CPF_CNPJ : string read FCPF_CNPJ write SetCPF_CNPJ;
+    property CEP : Integer read FCEP write SetCEP;
+    property UF : string read FUF write SetUF;
+    property Endereco : string read FEndereco write SetEndereco;
+    property Numero : Integer read FNumero write SetNumero;
+    property Bairro : string;
+    property Cidade : string;
+    property Complemento : string;
+    property Email : string;
+    property Contato : string;
+    property Telefone : Integer;
+    property DataCadastro : TDateTime read FDataCadastro write FDataCadastro;
+    function ObterDataCadastro : TDateTime;
+end;
+
+implementation
+
+{ TAgente }
+
+function TAgente.ObterDataCadastro: TDateTime;
+begin
+  Result := FDataCadastro;
+end;
+
+procedure TAgente.SetCEP(const Value: Integer);
+begin
+  FCEP := Value;
+end;
+
+procedure TAgente.SetCPF_CNPJ(const Value: string);
+begin
+  FCPF_CNPJ := Value;
+end;
+
+procedure TAgente.SetEndereco(const Value: string);
+begin
+  FEndereco := Value;
+end;
+
+procedure TAgente.setNome(const Value: string);
+begin
+//if Value = EmptyStr then
+//  raise Exception.Create('Valor não pode ser vázio')
+//else
+  FNome := Value;
+end;
+
+procedure TAgente.SetNumero(const Value: Integer);
+begin
+  FNumero := Value;
+end;
+
+procedure TAgente.SetTPessoa(const Value: string);
+begin
+  FTPessoa := Value;
+end;
+
+procedure TAgente.SetUF(const Value: string);
+begin
+  FUF := Value;
+end;
+
+end.

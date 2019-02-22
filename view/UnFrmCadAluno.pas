@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, UnFrmPai, DB, ExtCtrls, StdCtrls, Buttons;
+  Dialogs, UnFrmPai, DB, ExtCtrls, StdCtrls, Buttons, Mask;
 
 type
   TfrmCadAluno = class(TfrmPai)
@@ -13,7 +13,6 @@ type
   public
     { Public declarations }
   end;
-
 var
   frmCadAluno: TfrmCadAluno;
 

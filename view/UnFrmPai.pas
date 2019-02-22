@@ -26,6 +26,29 @@ type
     cbxTipoPessoa: TComboBox;
     lblCPFCNPJ: TLabel;
     mskCPFCNPJ: TMaskEdit;
+    mskDataCadastro: TMaskEdit;
+    lblCep: TLabel;
+    mskCEP: TMaskEdit;
+    lblUF: TLabel;
+    cbxUF: TComboBox;
+    lblEndereco: TLabel;
+    edtEndereco: TEdit;
+    lblNumero: TLabel;
+    edtNumero: TEdit;
+    lblBairro: TLabel;
+    edtBairro: TEdit;
+    lblCidade: TLabel;
+    lblComplemento: TLabel;
+    lblEmail: TLabel;
+    edtCidade: TEdit;
+    edtComplemento: TEdit;
+    edtEmail: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    edtContato: TEdit;
+    edtTelefone: TEdit;
+    Label3: TLabel;
+    mmoObservacoes: TMemo;
     procedure mascaraCPFCNPJ(Sender: TObject);
     procedure NavegarEnter(Sender: TObject; var Key: Char);
     procedure limparCampos;
@@ -69,24 +92,18 @@ end;
 
 
 procedure TfrmPai.mascaraCPFCNPJ(Sender: TObject);
-var
-  i : Integer;
 begin
-  for i := 0 to cbxTipoPessoa.ItemIndex - 1 do
-  begin
     if cbxTipoPessoa.ItemIndex = 0 then
     begin
       lblCPFCNPJ.Caption := 'CPF';
-      mskCPFCNPJ.EditMask := '999.999.999-99;';
+      mskCPFCNPJ.EditMask := '999.999.999-99;0;_';
       mskCPFCNPJ.Width := 85;
     end;
     if cbxTipoPessoa.ItemIndex = 1 then
     begin
       lblCPFCNPJ.Caption := 'CNPJ';
-      mskCPFCNPJ.EditMask := '99.999.999/9999-99;';
-      mskCPFCNPJ.Width := 101
+      mskCPFCNPJ.EditMask := '99.999.999/9999-99;0;_';
+      mskCPFCNPJ.Width := 108
     end;
-  end
-end;
-
+  end;
 end.

@@ -1,5 +1,5 @@
 inherited frmCadEscola: TfrmCadEscola
-  Caption = 'frmCadEscola'
+  Caption = 'Cadastro de Escola'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow

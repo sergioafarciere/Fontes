@@ -24,6 +24,29 @@ type
     dspSelect: TDataSetProvider;
     dstSelectESCCPFCNPJ: TStringField;
     cdsSelectESCCPFCNPJ: TStringField;
+    cdsSelectESCDATCAD: TSQLTimeStampField;
+    dstSelectESCCEP: TIntegerField;
+    dstSelectESCUF: TStringField;
+    dstSelectESCEND: TStringField;
+    dstSelectESCNUM: TStringField;
+    dstSelectESCBAI: TStringField;
+    dstSelectESCCID: TStringField;
+    dstSelectESCCOMP: TStringField;
+    dstSelectESCEMAIL: TStringField;
+    dstSelectESCCONT: TStringField;
+    dstSelectESCTEL: TIntegerField;
+    dstSelectESCOBS: TStringField;
+    cdsSelectESCCEP: TIntegerField;
+    cdsSelectESCUF: TStringField;
+    cdsSelectESCEND: TStringField;
+    cdsSelectESCNUM: TStringField;
+    cdsSelectESCBAI: TStringField;
+    cdsSelectESCCID: TStringField;
+    cdsSelectESCCOMP: TStringField;
+    cdsSelectESCEMAIL: TStringField;
+    cdsSelectESCCONT: TStringField;
+    cdsSelectESCTEL: TIntegerField;
+    cdsSelectESCOBS: TStringField;
 
   private
     { Private declarations }
@@ -69,6 +92,18 @@ begin
   dstInsert.ParamByName('ESCNOME').AsString := oEscola.Nome;
   dstInsert.ParamByName('ESCTIP').AsString := oEscola.TPessoa;
   dstInsert.ParamByName('ESCCPFCNPJ').AsString := oEscola.CPF_CNPJ;
+  dstInsert.ParamByName('ESCCEP').AsInteger := oEscola.CEP;
+  dstInsert.ParamByName('ESCUF').AsString := oEscola.UF;
+  dstInsert.ParamByName('ESCEND').AsString := oEscola.Endereco;
+  dstInsert.ParamByName('ESCNUM').AsString := oEscola.Numero;
+  dstInsert.ParamByName('ESCBAI').AsString := oEscola.Bairro;
+  dstInsert.ParamByName('ESCCID').AsString := oEscola.Cidade;
+  dstInsert.ParamByName('ESCCOMP').AsString := oEscola.Complemento;
+  dstInsert.ParamByName('ESCEMAIL').AsString := oEscola.Email;
+  dstInsert.ParamByName('ESCCONT').AsString := oEscola.Contato;
+  dstInsert.ParamByName('ESCTEL').AsInteger := oEscola.Telefone;
+  dstInsert.ParamByName('ESCOBS').AsString := oEscola.Observacao;
+//  dstInsert.ParamByName('ESCDATCAD').AsDateTime := oEscola.DataCadastro;
   try
     dstInsert.ExecSQL();
     Result := True;
@@ -87,6 +122,19 @@ end;
 function TdmConexao.Alterar(oEscola: TEscola; out sErro: string): Boolean;
 begin
   dstUpdate.ParamByName('ESCNOME').AsString := oEscola.Nome;
+  dstUpdate.ParamByName('ESCTIP').AsString := oEscola.TPessoa;
+  dstUpdate.ParamByName('ESCCPFCNPJ').AsString := oEscola.CPF_CNPJ;
+  dstUpdate.ParamByName('ESCCEP').AsInteger := oEscola.CEP;
+  dstUpdate.ParamByName('ESCUF').AsString := oEscola.UF;
+  dstUpdate.ParamByName('ESCEND').AsString := oEscola.Endereco;
+  dstUpdate.ParamByName('ESCNUM').AsString := oEscola.Numero;
+  dstUpdate.ParamByName('ESCBAI').AsString := oEscola.Bairro;
+  dstUpdate.ParamByName('ESCCID').AsString := oEscola.Cidade;
+  dstUpdate.ParamByName('ESCCOMP').AsString := oEscola.Complemento;
+  dstUpdate.ParamByName('ESCEMAIL').AsString := oEscola.Email;
+  dstUpdate.ParamByName('ESCCONT').AsString := oEscola.Contato;
+  dstUpdate.ParamByName('ESCTEL').AsInteger := oEscola.Telefone;
+  dstUpdate.ParamByName('ESCOBS').AsString := oEscola.Observacao;
   dstUpdate.ParamByName('ID').AsInteger := oEscola.ID;
   try
     dstUpdate.ExecSQL();
@@ -130,6 +178,18 @@ begin
     begin
       ID := sqlEscola.FieldByName('ID').AsInteger;
       Nome := sqlEscola.FieldByName('ESCNOME').AsString;
+      CPF_CNPJ := sqlEscola.FieldByName('ESCCPFCNPJ').AsString;
+      CEP := sqlEscola.FieldByName('ESCCEP').AsInteger;
+      UF := sqlEscola.FieldByName('ESCUF').AsString;
+      Endereco := sqlEscola.FieldByName('ESCEND').AsString;
+      Numero := sqlEscola.FieldByName('ESCNUM').AsString;
+      Bairro := sqlEscola.FieldByName('ESCBAI').AsString;
+      Cidade := sqlEscola.FieldByName('ESCCID').AsString;
+      Complemento := sqlEscola.FieldByName('ESCCOMP').AsString;
+      Email := sqlEscola.FieldByName('ESCEMAIL').AsString;
+      Contato := sqlEscola.FieldByName('ESCCONT').AsString;
+      Telefone := sqlEscola.FieldByName('ESCTEL').AsInteger;
+      Observacao := sqlEscola.FieldByName('ESCOBS').AsString;
     end;
   finally
   FreeAndNil(sqlEscola);
