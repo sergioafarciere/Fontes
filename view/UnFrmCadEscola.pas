@@ -8,92 +8,36 @@ uses
   Grids, DBGrids, FMTBcd, SqlExpr, Mask;
 
 type
-  TOperacao = (opIncluir, opAlterar, opNavegar, opExcluir, opGravar, opCancelar, opSair);
   TfrmCadEscola = class(TfrmPai)
     procedure btnNovoClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure edtCodigoKeyPress(Sender: TObject; var Key: Char);
     procedure btnExcluirClick(Sender: TObject);
   private
-    FOperacao: TOperacao;
     procedure Novo;
     procedure Alterar;
     procedure Gravar;
     procedure CarregarEscola;
-    procedure habilitarComandos(aOperacao : TOperacao);
     procedure Insert;
     procedure Update;
     procedure Delete;
   end;
-
 var
   frmCadEscola: TfrmCadEscola;
 
 implementation
 
 {$R *.dfm}
-
-{$region'CREATE_DESTROY'}
-procedure TfrmCadEscola.FormCreate(Sender: TObject);
-begin
-  dmConexao := TdmConexao.Create(nil);
-end;
-
-procedure TfrmCadEscola.FormDestroy(Sender: TObject);
-begin
-  FreeAndNil(dmConexao);
-end;
-procedure TfrmCadEscola.FormShow(Sender: TObject);
-begin
-  habilitarComandos(opNavegar);
-end;
-
-{$endregion}
-
-{$region'CONTROLE DE TELA'}
-procedure TfrmCadEscola.habilitarComandos;
-begin
-  case aOperacao of
-  opAlterar, opIncluir:
-  begin
-    edtCodigo.Enabled := False;
-    edtNome.Enabled := True;
-    mskDataCadastro.Visible := False;
-    btnNovo.Enabled := False;;
-    btnExcluir.Enabled := False;
-    btnAlterar.Enabled := False;
-    btnCancelar.Enabled := True;
-    btnGravar.Enabled := True;
-    btnSair.Enabled := False;
-  end;
-  opNavegar:
-  begin
-    edtCodigo.Enabled := True;
-    edtNome.Enabled := False;
-    btnNovo.Enabled := True;
-    mskDataCadastro.Visible := False;
-    btnExcluir.Enabled := True;
-    btnAlterar.Enabled := True;
-    btnCancelar.Enabled := False;
-    btnGravar.Enabled := False;
-    btnSair.Enabled := True;
-  end;
-  end;
-end;
-
+{$REGION'KEYPRESS'}
 procedure TfrmCadEscola.edtCodigoKeyPress(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) and (edtCodigo.Text <> EmptyStr)  then
   CarregarEscola;
 end;
-
-{$endregion}
+{$ENDREGION}
 
 {$region'OPERACOES'}
 
@@ -189,14 +133,13 @@ begin
     edtComplemento.Text := oEscola.Complemento;
     edtEmail.Text := oEscola.Email;
     edtContato.Text := oEscola.Contato;
-    edtTelefone.Text := IntToStr(oEscola.Telefone);
+    mskTelefone.Text := IntToStr(oEscola.Telefone);
     mmoObservacoes.Text := oEscola.Observacao;
     if StrToInt(edtCodigo.Text) = 0 then
     begin
       ShowMessage('Escola não encontrada!');
       limparCampos;
     end;
-
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -226,7 +169,7 @@ begin
     oEscola.Complemento := edtComplemento.Text;
     oEscola.Email := edtEmail.Text;
     oEscola.Contato := edtContato.Text;
-    oEscola.Telefone := StrToInt(edtTelefone.Text);
+    oEscola.Telefone := StrToInt(mskTelefone.Text);
     oEscola.Observacao := mmoObservacoes.Text;
     if not oEscolaCotroller.Inserir(oEscola,sErro) then
       raise Exception.Create(sErro)
@@ -262,7 +205,7 @@ begin
     oEscola.Complemento := edtComplemento.Text;
     oEscola.Email := edtEmail.Text;
     oEscola.Contato := edtContato.Text;
-    oEscola.Telefone := StrToInt(edtTelefone.Text);
+    oEscola.Telefone := StrToInt(mskTelefone.Text);
     oEscola.Observacao := mmoObservacoes.Text;
     if not oEscolaController.Alterar(oEscola,sErro) then
       raise Exception.Create(sErro)
@@ -300,7 +243,6 @@ begin
   FreeAndNil(oEscolaController);
   end;
 end;
-
 
 {$endregion}
 

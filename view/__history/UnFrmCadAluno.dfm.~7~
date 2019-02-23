@@ -1,0 +1,12 @@
+inherited frmCadAluno: TfrmCadAluno
+  Caption = 'frmCadAluno'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited mskTel: TMaskEdit
+    Width = 85
+    EditMask = '!\(99\)00000-0000;0;_'
+    MaxLength = 14
+    Text = ''
+    ExplicitWidth = 85
+  end
+end

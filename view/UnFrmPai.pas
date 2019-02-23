@@ -5,9 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, UnModelAgente, UnConexaoSql, DB, UnModelEscola,
-  Mask;
+  Mask, UnControllerEscola;
 
 type
+  TOperacao = (opIncluir, opAlterar, opNavegar, opExcluir, opGravar, opCancelar, opSair);
   TfrmPai = class(TForm)
     pnlTopPai: TPanel;
     btnNovo: TBitBtn;
@@ -46,14 +47,18 @@ type
     Label1: TLabel;
     Label2: TLabel;
     edtContato: TEdit;
-    edtTelefone: TEdit;
     Label3: TLabel;
     mmoObservacoes: TMemo;
+    mskTelefone: TMaskEdit;
     procedure mascaraCPFCNPJ(Sender: TObject);
     procedure NavegarEnter(Sender: TObject; var Key: Char);
     procedure limparCampos;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   public
-
+    FOperacao: TOperacao;
+    procedure habilitarComandos(aOperacao : TOperacao);
   end;
 
 var
@@ -63,8 +68,80 @@ implementation
 
 {$R *.dfm}
 
-
 { TfrmPai }
+
+{$region'CREATE_DESTROY'}
+procedure TfrmPai.FormCreate(Sender: TObject);
+begin
+  dmConexao := TdmConexao.Create(nil);
+end;
+procedure TfrmPai.FormDestroy(Sender: TObject);
+begin
+  FreeAndNil(dmConexao);
+end;
+
+procedure TfrmPai.FormShow(Sender: TObject);
+begin
+  habilitarComandos(opNavegar);
+end;
+{$endregion}
+
+{$region'CONTROLE DE TELA'}
+procedure TfrmPai.habilitarComandos(aOperacao: TOperacao);
+begin
+  case aOperacao of
+  opAlterar, opIncluir:
+  begin
+    edtCodigo.Enabled := False;
+    cbxTipoPessoa.Enabled := True;
+    edtNome.Enabled := True;
+    mskCPFCNPJ.Enabled := True;
+    mskCEP.Enabled := True;
+    cbxUF.Enabled := True;
+    edtEndereco.Enabled := True;
+    edtNumero.Enabled := True;
+    edtBairro.Enabled := True;
+    edtCidade.Enabled := True;
+    edtComplemento.Enabled := True;
+    edtEmail.Enabled := True;
+    edtContato.Enabled := True;
+    mskTelefone.Enabled := True;
+    mmoObservacoes.Enabled := True;
+    mskDataCadastro.Visible := False;
+    btnNovo.Enabled := False;;
+    btnExcluir.Enabled := False;
+    btnAlterar.Enabled := False;
+    btnCancelar.Enabled := True;
+    btnGravar.Enabled := True;
+    btnSair.Enabled := False;
+  end;
+  opNavegar:
+  begin
+    edtCodigo.Enabled := True;
+    cbxTipoPessoa.Enabled := False;
+    edtNome.Enabled := False;
+    mskCPFCNPJ.Enabled := False;
+    mskCEP.Enabled := False;
+    cbxUF.Enabled := False;
+    edtEndereco.Enabled := False;
+    edtNumero.Enabled := False;
+    edtBairro.Enabled := False;
+    edtCidade.Enabled := False;
+    edtComplemento.Enabled := False;
+    edtEmail.Enabled := False;
+    edtContato.Enabled := False;
+    mskTelefone.Enabled := False;
+    mmoObservacoes.Enabled := False;
+    mskDataCadastro.Visible := False;
+    btnNovo.Enabled := True;
+    btnExcluir.Enabled := True;
+    btnAlterar.Enabled := True;
+    btnCancelar.Enabled := False;
+    btnGravar.Enabled := False;
+    btnSair.Enabled := True;
+  end;
+  end;
+end;
 
 procedure TfrmPai.NavegarEnter(Sender: TObject; var Key: Char);
 begin
@@ -90,7 +167,6 @@ begin
   end;
 end;
 
-
 procedure TfrmPai.mascaraCPFCNPJ(Sender: TObject);
 begin
     if cbxTipoPessoa.ItemIndex = 0 then
@@ -106,4 +182,7 @@ begin
       mskCPFCNPJ.Width := 108
     end;
   end;
+
+{$endregion}
+
 end.

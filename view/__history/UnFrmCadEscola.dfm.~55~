@@ -1,0 +1,43 @@
+inherited frmCadEscola: TfrmCadEscola
+  Caption = 'Cadastro de Escola'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlTopPai: TPanel
+    inherited btnNovo: TBitBtn
+      OnClick = btnNovoClick
+    end
+    inherited btnAlterar: TBitBtn
+      OnClick = btnAlterarClick
+    end
+    inherited btnExcluir: TBitBtn
+      OnClick = btnExcluirClick
+    end
+    inherited btnCancelar: TBitBtn
+      OnClick = btnCancelarClick
+    end
+    inherited btnSair: TBitBtn
+      OnClick = btnSairClick
+    end
+    inherited btnGravar: TBitBtn
+      OnClick = btnGravarClick
+    end
+  end
+  inherited edtCodigo: TEdit
+    OnKeyPress = edtCodigoKeyPress
+  end
+  object mskTelefone: TMaskEdit [32]
+    Left = 154
+    Top = 227
+    Width = 85
+    Height = 21
+    EditMask = '!\(99\)99999-0000;0;_'
+    MaxLength = 14
+    TabOrder = 17
+  end
+  inherited mskTel: TMaskEdit
+    TabOrder = 18
+  end
+end

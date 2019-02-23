@@ -1,7 +1,6 @@
 inherited frmCadEscola: TfrmCadEscola
   Caption = 'Cadastro de Escola'
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -26,6 +25,8 @@ inherited frmCadEscola: TfrmCadEscola
     end
   end
   inherited edtCodigo: TEdit
+    Left = 27
     OnKeyPress = edtCodigoKeyPress
+    ExplicitLeft = 27
   end
 end
