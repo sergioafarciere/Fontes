@@ -101,7 +101,6 @@ begin
   try
     FOperacao := opIncluir;
     edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
-    mskDataCadastro.Text := DateTimeToStr(Now);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -186,11 +185,10 @@ begin
     oEscola.Contato := edtContato.Text;
     oEscola.Telefone := mskTelefone.Text;
     oEscola.Observacao := UpperCase(mmoObservacoes.Text);
-    oEscola.DataCadastro := StrToDateTime(mskDataCadastro.Text);
     if not oEscolaCotroller.Inserir(oEscola,sErro) then
       raise Exception.Create(sErro)
     else
-    ShowMessage('Escola cadastrada com sucesso!');
+    MessageDlg('Escola cadastrada com sucesso!',mtInformation,[mbOK],0);
     limparCampos;
   finally
   FreeAndNil(oEscola);
@@ -226,7 +224,7 @@ begin
     if not oEscolaController.Alterar(oEscola,sErro) then
       raise Exception.Create(sErro)
     else
-    ShowMessage('Escola alterada com sucesso!');
+    MessageDlg('Escola alterada com sucesso!',mtInformation,[mbOK],0);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -251,7 +249,7 @@ begin
         if not oEscolaController.Excluir(StrToInt(edtCodigo.Text), sErro) then
         raise Exception.Create(sErro)
         else
-        ShowMessage('Escola excluída com sucesso!');
+        MessageDlg('Escola excluída com sucesso!',mtInformation,[mbOK],0);
         limparCampos;
      end;
     end

@@ -52,7 +52,7 @@ procedure TfrmCadEscola.btnAlterarClick(Sender: TObject);
 begin
   if edtCodigo.Text = EmptyStr then
   begin
-    ShowMessage('Insira o código para efetuar a alteração');
+    MessageDlg('Insira o código para efetuar a alteração',mtInformation,[mbOK],0);
     habilitarComandos(opNavegar);
   end
   else
@@ -151,7 +151,7 @@ begin
     mmoObservacoes.Text := oEscola.Observacao;
     if StrToInt(edtCodigo.Text) = 0 then
     begin
-      ShowMessage('Escola não encontrada!');
+      MessageDlg('Escola não encontrada!',mtInformation,[mbOK],0);
       limparCampos;
     end;
   finally
@@ -188,7 +188,7 @@ begin
     if not oEscolaCotroller.Inserir(oEscola,sErro) then
       raise Exception.Create(sErro)
     else
-    ShowMessage('Escola cadastrada com sucesso!');
+    MessageDlg('Escola cadastrada com sucesso!',mtInformation,[mbOK],0);
     limparCampos;
   finally
   FreeAndNil(oEscola);
@@ -224,7 +224,7 @@ begin
     if not oEscolaController.Alterar(oEscola,sErro) then
       raise Exception.Create(sErro)
     else
-    ShowMessage('Escola alterada com sucesso!');
+    MessageDlg('Escola alterada com sucesso!',mtInformation,[mbOK],0);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -249,7 +249,7 @@ begin
         if not oEscolaController.Excluir(StrToInt(edtCodigo.Text), sErro) then
         raise Exception.Create(sErro)
         else
-        ShowMessage('Escola excluída com sucesso!');
+        MessageDlg('Escola excluída com sucesso!',mtInformation,[mbOK],0);
         limparCampos;
      end;
     end

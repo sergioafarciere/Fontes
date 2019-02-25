@@ -95,14 +95,12 @@ procedure TfrmCadEscola.Novo;
 var
   oEscola : TEscola;
   oEscolaController : TEscolaController;
-  Data : TDateTime;
 begin
   oEscola := TEscola.Create;
   oEscolaController := TEscolaController.Create;
   try
     FOperacao := opIncluir;
     edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
-    mskDataCadastro.Text := DateTimeToStr(now);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -226,7 +224,7 @@ begin
     if not oEscolaController.Alterar(oEscola,sErro) then
       raise Exception.Create(sErro)
     else
-    ShowMessage('Escola alterada com sucesso!');
+    MessageDlg('Escola alterada com sucesso!',mtInformation,[mbOK],0);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);

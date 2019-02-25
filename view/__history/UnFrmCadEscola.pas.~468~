@@ -101,7 +101,6 @@ begin
   try
     FOperacao := opIncluir;
     edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
-    mskDataCadastro.Text := DateToStr(Now);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -186,7 +185,6 @@ begin
     oEscola.Contato := edtContato.Text;
     oEscola.Telefone := mskTelefone.Text;
     oEscola.Observacao := UpperCase(mmoObservacoes.Text);
-    oEscola.DataCadastro := StrToDateTime(mskDataCadastro.Text);
     if not oEscolaCotroller.Inserir(oEscola,sErro) then
       raise Exception.Create(sErro)
     else

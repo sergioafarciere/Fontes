@@ -322,12 +322,7 @@ object dmConexao: TdmConexao
   end
   object cdsSelect: TClientDataSet
     Aggregates = <>
-    Params = <
-      item
-        DataType = ftString
-        Name = 'ESCNOME'
-        ParamType = ptInput
-      end>
+    Params = <>
     ProviderName = 'dspSelect'
     Left = 24
     Top = 224

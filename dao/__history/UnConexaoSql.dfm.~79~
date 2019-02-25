@@ -93,12 +93,17 @@ object dmConexao: TdmConexao
     object dstSelectESCCONT: TStringField
       FieldName = 'ESCCONT'
     end
-    object dstSelectESCTEL: TIntegerField
-      FieldName = 'ESCTEL'
-    end
     object dstSelectESCOBS: TStringField
       FieldName = 'ESCOBS'
       Size = 150
+    end
+    object dstSelectESCDATCAD: TSQLTimeStampField
+      FieldName = 'ESCDATCAD'
+      Required = True
+    end
+    object dstSelectESCTEL: TStringField
+      FieldName = 'ESCTEL'
+      Size = 12
     end
   end
   object dstInsert: TSQLDataSet
@@ -109,12 +114,13 @@ object dmConexao: TdmConexao
       ',[ESCCEP]'#13#10'           ,[ESCUF]'#13#10'           ,[ESCEND]'#13#10'          ' +
       ' ,[ESCNUM]'#13#10'           ,[ESCBAI]'#13#10'           ,[ESCCID]'#13#10'        ' +
       '   ,[ESCCOMP]'#13#10'           ,[ESCEMAIL]'#13#10'           ,[ESCCONT]'#13#10'  ' +
-      '         ,[ESCTEL]'#13#10'           ,[ESCOBS])'#13#10'     VALUES'#13#10'        ' +
-      '   (:ID'#13#10'           ,:ESCNOME'#13#10'           ,:ESCTIP'#13#10'           ,' +
-      ':ESCCPFCNPJ'#13#10'           ,:ESCCEP '#13#10'           ,:ESCUF'#13#10'         ' +
-      '  ,:ESCEND'#13#10'           ,:ESCNUM'#13#10'           ,:ESCBAI'#13#10'          ' +
-      ' ,:ESCCID'#13#10'           ,:ESCCOMP'#13#10'           ,:ESCEMAIL'#13#10'        ' +
-      '   ,:ESCCONT'#13#10'           ,:ESCTEL'#13#10'           ,:ESCOBS)'
+      '         ,[ESCTEL]'#13#10'           ,[ESCOBS]'#13#10'           ,[ESCDATCAD' +
+      '])'#13#10'     VALUES'#13#10'           (:ID'#13#10'           ,:ESCNOME'#13#10'        ' +
+      '   ,:ESCTIP'#13#10'           ,:ESCCPFCNPJ'#13#10'           ,:ESCCEP '#13#10'    ' +
+      '       ,:ESCUF'#13#10'           ,:ESCEND'#13#10'           ,:ESCNUM'#13#10'      ' +
+      '     ,:ESCBAI'#13#10'           ,:ESCCID'#13#10'           ,:ESCCOMP'#13#10'      ' +
+      '     ,:ESCEMAIL'#13#10'           ,:ESCCONT'#13#10'           ,:ESCTEL'#13#10'    ' +
+      '       ,:ESCOBS'#13#10'           ,:ESCDATCAD)'
     DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <
@@ -191,6 +197,11 @@ object dmConexao: TdmConexao
       item
         DataType = ftUnknown
         Name = 'ESCOBS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftUnknown
+        Name = 'ESCDATCAD'
         ParamType = ptInput
       end>
     SQLConnection = sqlConexao
