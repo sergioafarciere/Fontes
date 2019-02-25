@@ -104,21 +104,21 @@ object frmPai: TfrmPai
     Height = 13
     Caption = 'E-mail:'
   end
-  object Label1: TLabel
+  object lblContato: TLabel
     Left = 30
     Top = 212
     Width = 43
     Height = 13
     Caption = 'Contato:'
   end
-  object Label2: TLabel
+  object lblTelefone: TLabel
     Left = 154
     Top = 212
     Width = 46
     Height = 13
     Caption = 'Telefone:'
   end
-  object Label3: TLabel
+  object lblObservacao: TLabel
     Left = 30
     Top = 264
     Width = 67
@@ -226,25 +226,31 @@ object frmPai: TfrmPai
     TabOrder = 16
   end
   object edtCodigo: TEdit
+    Tag = 1
     Left = 30
     Top = 86
     Width = 65
     Height = 21
+    CharCase = ecUpperCase
     MaxLength = 6
     TabOrder = 0
   end
   object edtNome: TEdit
+    Tag = 1
     Left = 193
     Top = 86
     Width = 393
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 2
   end
   object cbxTipoPessoa: TComboBox
+    Tag = 1
     Left = 98
     Top = 86
     Width = 92
     Height = 21
+    CharCase = ecUpperCase
     ItemHeight = 13
     TabOrder = 1
     OnChange = mascaraCPFCNPJ
@@ -253,37 +259,34 @@ object frmPai: TfrmPai
       'JURIDICA')
   end
   object mskCPFCNPJ: TMaskEdit
+    Tag = 1
     Left = 589
     Top = 86
     Width = 101
     Height = 21
+    CharCase = ecUpperCase
     EditMask = '999.999.999-99;0;_'
     MaxLength = 14
     TabOrder = 3
   end
-  object mskDataCadastro: TMaskEdit
-    Left = 667
-    Top = 415
-    Width = 64
-    Height = 21
-    EditMask = '!99/99/9999;0;_'
-    MaxLength = 10
-    TabOrder = 17
-  end
   object mskCEP: TMaskEdit
+    Tag = 1
     Left = 30
     Top = 131
     Width = 59
     Height = 21
+    CharCase = ecUpperCase
     EditMask = '99999-999;0;_'
     MaxLength = 9
     TabOrder = 4
   end
   object cbxUF: TComboBox
+    Tag = 1
     Left = 92
     Top = 131
     Width = 44
     Height = 21
+    CharCase = ecUpperCase
     ItemHeight = 13
     TabOrder = 5
     Items.Strings = (
@@ -316,31 +319,39 @@ object frmPai: TfrmPai
       'TO')
   end
   object edtEndereco: TEdit
+    Tag = 1
     Left = 139
     Top = 131
     Width = 368
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 6
   end
   object edtNumero: TEdit
+    Tag = 1
     Left = 510
     Top = 131
     Width = 73
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 7
   end
   object edtBairro: TEdit
+    Tag = 1
     Left = 586
     Top = 131
     Width = 104
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 8
   end
   object edtCidade: TEdit
+    Tag = 1
     Left = 30
     Top = 180
     Width = 106
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 9
   end
   object edtComplemento: TEdit
@@ -348,6 +359,7 @@ object frmPai: TfrmPai
     Top = 180
     Width = 355
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 10
   end
   object edtEmail: TEdit
@@ -355,6 +367,7 @@ object frmPai: TfrmPai
     Top = 180
     Width = 193
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 11
   end
   object edtContato: TEdit
@@ -362,6 +375,7 @@ object frmPai: TfrmPai
     Top = 227
     Width = 121
     Height = 21
+    CharCase = ecUpperCase
     TabOrder = 12
   end
   object mmoObservacoes: TMemo
@@ -376,11 +390,9 @@ object frmPai: TfrmPai
     Top = 227
     Width = 87
     Height = 21
+    CharCase = ecUpperCase
     EditMask = '!\(99\)00000-0000;0;_'
     MaxLength = 14
     TabOrder = 13
-  end
-  object tmnPai: TTimer
-    Top = 424
   end
 end

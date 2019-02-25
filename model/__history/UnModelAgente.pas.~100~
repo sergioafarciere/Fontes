@@ -1,0 +1,163 @@
+unit UnModelAgente;
+
+interface
+
+uses SysUtils;
+
+type TAgente = class
+  private
+    FID: Integer;
+    FNome: string;
+    FTPessoa: string;
+    FCPF_CNPJ: string;
+    FCEP: Integer;
+    FUF: string;
+    FEndereco: string;
+    FNumero: string;
+    FEmail: string;
+    FBairro: string;
+    FComplemento: string;
+    FContato: string;
+    FCidade: string;
+    FTelefone: string;
+    FDataCadastro: TDateTime;
+    FObservacao: string;
+    procedure setNome(const Value: string);
+    procedure SetTPessoa(const Value: string);
+    procedure SetCPF_CNPJ(const Value: string);
+    procedure SetCEP(const Value: Integer);
+    procedure SetUF(const Value: string);
+    procedure SetEndereco(const Value: string);
+    procedure SetNumero(const Value: string);
+    procedure SetBairro(const Value: string);
+    procedure SetCidade(const Value: string);
+    procedure SetComplemento(const Value: string);
+    procedure SetContato(const Value: string);
+    procedure SetEmail(const Value: string);
+    procedure SetTelefone(const Value: string);
+    procedure SetObservacao(const Value: string);
+    procedure SetDataCadastro(const Value: TDateTime);
+  public
+    property ID : Integer read FID write FID;
+    property Nome : string read FNome write setNome;
+    property TPessoa : string read FTPessoa write SetTPessoa;
+    property CPF_CNPJ : string read FCPF_CNPJ write SetCPF_CNPJ;
+    property CEP : Integer read FCEP write SetCEP;
+    property UF : string read FUF write SetUF;
+    property Endereco : string read FEndereco write SetEndereco;
+    property Numero : string read FNumero write SetNumero;
+    property Bairro : string read FBairro write SetBairro;
+    property Cidade : string read FCidade write SetCidade;
+    property Complemento : string read FComplemento write SetComplemento;
+    property Email : string read FEmail write SetEmail;
+    property Contato : string read FContato write SetContato;
+    property Telefone : string read FTelefone write SetTelefone;
+    property Observacao : string read FObservacao write SetObservacao;
+    property DataCadastro : TDateTime read FDataCadastro write SetDataCadastro;
+    function ObterDataCadastro: TDateTime;
+end;
+
+implementation
+
+{ TAgente }
+
+function TAgente.ObterDataCadastro: TDateTime;
+begin
+  Data := StrToDateTime(FormatDateTime('ddmmyyyy',Now));
+  Result := True;
+end;
+
+procedure TAgente.SetBairro(const Value: string);
+begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FBairro := Value;
+end;
+
+procedure TAgente.SetCEP(const Value: Integer);
+begin
+//  if Value = StrToInt(EmptyStr) then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FCEP := Value;
+end;
+
+procedure TAgente.SetCidade(const Value: string);
+begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FCidade := Value;
+end;
+
+procedure TAgente.SetComplemento(const Value: string);
+begin
+  FComplemento := Value;
+end;
+
+procedure TAgente.SetContato(const Value: string);
+begin
+  FContato := Value;
+end;
+
+procedure TAgente.SetCPF_CNPJ(const Value: string);
+begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FCPF_CNPJ := Value;
+end;
+
+procedure TAgente.SetDataCadastro(const Value: TDateTime);
+begin
+  FDataCadastro := Value;
+end;
+
+procedure TAgente.SetEmail(const Value: string);
+begin
+  FEmail := Value;
+end;
+
+procedure TAgente.SetEndereco(const Value: string);
+begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FEndereco := Value;
+end;
+
+procedure TAgente.setNome(const Value: string);
+begin
+//if Value = EmptyStr then
+//  raise Exception.Create('Valor não pode ser vázio')
+  FNome := Value;
+end;
+
+procedure TAgente.SetNumero(const Value: string);
+begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FNumero := Value;
+end;
+
+procedure TAgente.SetObservacao(const Value: string);
+begin
+  FObservacao := Value;
+end;
+
+procedure TAgente.SetTelefone(const Value: string);
+begin
+  FTelefone := Value;
+end;
+
+procedure TAgente.SetTPessoa(const Value: string);
+begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FTPessoa := Value;
+end;
+
+procedure TAgente.SetUF(const Value: string);
+begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
+  FUF := Value;
+end;
+
+end.

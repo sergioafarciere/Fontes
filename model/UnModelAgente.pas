@@ -19,8 +19,8 @@ type TAgente = class
     FComplemento: string;
     FContato: string;
     FCidade: string;
-    FTelefone: Integer;
-    FDataCadastro: TDateTime;
+    FTelefone: string;
+    FDataCadastro: string;
     FObservacao: string;
     procedure setNome(const Value: string);
     procedure SetTPessoa(const Value: string);
@@ -34,8 +34,9 @@ type TAgente = class
     procedure SetComplemento(const Value: string);
     procedure SetContato(const Value: string);
     procedure SetEmail(const Value: string);
-    procedure SetTelefone(const Value: Integer);
+    procedure SetTelefone(const Value: string);
     procedure SetObservacao(const Value: string);
+    procedure SetDataCadastro(const Value: string);
   public
     property ID : Integer read FID write FID;
     property Nome : string read FNome write setNome;
@@ -50,10 +51,10 @@ type TAgente = class
     property Complemento : string read FComplemento write SetComplemento;
     property Email : string read FEmail write SetEmail;
     property Contato : string read FContato write SetContato;
-    property Telefone : Integer read FTelefone write SetTelefone;
+    property Telefone : string read FTelefone write SetTelefone;
     property Observacao : string read FObservacao write SetObservacao;
-    property DataCadastro : TDateTime read FDataCadastro write FDataCadastro;
-    function ObterDataCadastro : TDateTime;
+    property DataCadastro : string read FDataCadastro write SetDataCadastro;
+    function ObterDataCadastro: TDateTime;
 end;
 
 implementation
@@ -62,21 +63,27 @@ implementation
 
 function TAgente.ObterDataCadastro: TDateTime;
 begin
-  Result := FDataCadastro;
+  Result := Now;
 end;
 
 procedure TAgente.SetBairro(const Value: string);
 begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
   FBairro := Value;
 end;
 
 procedure TAgente.SetCEP(const Value: Integer);
 begin
+//  if Value = StrToInt(EmptyStr) then
+//    raise Exception.Create('Valor não pode ser vázio');
   FCEP := Value;
 end;
 
 procedure TAgente.SetCidade(const Value: string);
 begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
   FCidade := Value;
 end;
 
@@ -92,7 +99,14 @@ end;
 
 procedure TAgente.SetCPF_CNPJ(const Value: string);
 begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
   FCPF_CNPJ := Value;
+end;
+
+procedure TAgente.SetDataCadastro(const Value: string);
+begin
+  FDataCadastro := Value;
 end;
 
 procedure TAgente.SetEmail(const Value: string);
@@ -102,6 +116,8 @@ end;
 
 procedure TAgente.SetEndereco(const Value: string);
 begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
   FEndereco := Value;
 end;
 
@@ -109,12 +125,13 @@ procedure TAgente.setNome(const Value: string);
 begin
 //if Value = EmptyStr then
 //  raise Exception.Create('Valor não pode ser vázio')
-//else
   FNome := Value;
 end;
 
 procedure TAgente.SetNumero(const Value: string);
 begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
   FNumero := Value;
 end;
 
@@ -123,18 +140,22 @@ begin
   FObservacao := Value;
 end;
 
-procedure TAgente.SetTelefone(const Value: Integer);
+procedure TAgente.SetTelefone(const Value: string);
 begin
   FTelefone := Value;
 end;
 
 procedure TAgente.SetTPessoa(const Value: string);
 begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
   FTPessoa := Value;
 end;
 
 procedure TAgente.SetUF(const Value: string);
 begin
+//  if Value = EmptyStr then
+//    raise Exception.Create('Valor não pode ser vázio');
   FUF := Value;
 end;
 

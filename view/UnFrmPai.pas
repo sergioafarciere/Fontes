@@ -16,7 +16,6 @@ type
     btnExcluir: TBitBtn;
     btnCancelar: TBitBtn;
     pnlBottonPai: TPanel;
-    tmnPai: TTimer;
     lblCodigo: TLabel;
     edtCodigo: TEdit;
     lblNome: TLabel;
@@ -27,7 +26,6 @@ type
     cbxTipoPessoa: TComboBox;
     lblCPFCNPJ: TLabel;
     mskCPFCNPJ: TMaskEdit;
-    mskDataCadastro: TMaskEdit;
     lblCep: TLabel;
     mskCEP: TMaskEdit;
     lblUF: TLabel;
@@ -44,10 +42,10 @@ type
     edtCidade: TEdit;
     edtComplemento: TEdit;
     edtEmail: TEdit;
-    Label1: TLabel;
-    Label2: TLabel;
+    lblContato: TLabel;
+    lblTelefone: TLabel;
     edtContato: TEdit;
-    Label3: TLabel;
+    lblObservacao: TLabel;
     mmoObservacoes: TMemo;
     mskTelefone: TMaskEdit;
     procedure mascaraCPFCNPJ(Sender: TObject);
@@ -107,7 +105,6 @@ begin
     edtContato.Enabled := True;
     mskTelefone.Enabled := True;
     mmoObservacoes.Enabled := True;
-    mskDataCadastro.Visible := False;
     btnNovo.Enabled := False;;
     btnExcluir.Enabled := False;
     btnAlterar.Enabled := False;
@@ -132,7 +129,6 @@ begin
     edtContato.Enabled := False;
     mskTelefone.Enabled := False;
     mmoObservacoes.Enabled := False;
-    mskDataCadastro.Visible := False;
     btnNovo.Enabled := True;
     btnExcluir.Enabled := True;
     btnAlterar.Enabled := True;

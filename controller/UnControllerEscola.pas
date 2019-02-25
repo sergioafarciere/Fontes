@@ -13,6 +13,7 @@ type
        function Alterar(oEscola: TEscola; var sErro: string): Boolean;
        function Excluir(iCodigo: Integer; var sErro: string): Boolean;
        function RetornarId : Integer;
+//       function ObterDataAtual : TDateTime;
        procedure Pesquisar(sNome: string);
        procedure CarregarEscola(oEscola : TEscola; iCodigo: Integer);
      end;
@@ -48,7 +49,6 @@ begin
   Result := dmConexao.Inserir(oEscola,sErro);
 end;
 
-
 {$ENDREGION}
 
 {$REGION'CONTROLLER PESQUISAR'}
@@ -65,5 +65,11 @@ begin
 end;
 {$ENDREGION}
 
+//{$region'OBTER DATA ATUAL'}
+//function TEscolaController.ObterDataAtual: TDateTime;
+//begin
+//   Result := dmConexao.ObterDataAtual;
+//end;
+//{$ENDREGION}
 
 end.

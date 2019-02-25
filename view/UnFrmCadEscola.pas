@@ -34,8 +34,15 @@ implementation
 {$REGION'KEYPRESS'}
 procedure TfrmCadEscola.edtCodigoKeyPress(Sender: TObject; var Key: Char);
 begin
+  if (Key = #13) and (edtCodigo.Text = EmptyStr) then
+    begin
+    ShowMessage('Insira um código.');
+  end;
   if (Key = #13) and (edtCodigo.Text <> EmptyStr)  then
-  CarregarEscola;
+  begin
+    CarregarEscola;
+    edtCodigo.SetFocus;
+  end;
 end;
 {$ENDREGION}
 
@@ -43,8 +50,16 @@ end;
 
 procedure TfrmCadEscola.btnAlterarClick(Sender: TObject);
 begin
-  Alterar;
-  habilitarComandos(opAlterar);
+  if edtCodigo.Text = EmptyStr then
+  begin
+    ShowMessage('Insira o código para efetuar a alteração');
+    habilitarComandos(opNavegar);
+  end
+  else
+  begin
+    Alterar;
+    habilitarComandos(opAlterar);
+  end;
 end;
 
 procedure TfrmCadEscola.btnCancelarClick(Sender: TObject);
@@ -86,7 +101,6 @@ begin
   try
     FOperacao := opIncluir;
     edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
-//    mskDataCadastro.Text := FormatDateTime('DD/MM/YYYY', Now);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);
@@ -133,7 +147,7 @@ begin
     edtComplemento.Text := oEscola.Complemento;
     edtEmail.Text := oEscola.Email;
     edtContato.Text := oEscola.Contato;
-    mskTelefone.Text := IntToStr(oEscola.Telefone);
+    mskTelefone.Text := oEscola.Telefone;
     mmoObservacoes.Text := oEscola.Observacao;
     if StrToInt(edtCodigo.Text) = 0 then
     begin
@@ -169,8 +183,8 @@ begin
     oEscola.Complemento := edtComplemento.Text;
     oEscola.Email := edtEmail.Text;
     oEscola.Contato := edtContato.Text;
-    oEscola.Telefone := StrToInt(mskTelefone.Text);
-    oEscola.Observacao := mmoObservacoes.Text;
+    oEscola.Telefone := mskTelefone.Text;
+    oEscola.Observacao := UpperCase(mmoObservacoes.Text);
     if not oEscolaCotroller.Inserir(oEscola,sErro) then
       raise Exception.Create(sErro)
     else
@@ -205,8 +219,8 @@ begin
     oEscola.Complemento := edtComplemento.Text;
     oEscola.Email := edtEmail.Text;
     oEscola.Contato := edtContato.Text;
-    oEscola.Telefone := StrToInt(mskTelefone.Text);
-    oEscola.Observacao := mmoObservacoes.Text;
+    oEscola.Telefone := mskTelefone.Text;
+    oEscola.Observacao := UpperCase(mmoObservacoes.Text);
     if not oEscolaController.Alterar(oEscola,sErro) then
       raise Exception.Create(sErro)
     else

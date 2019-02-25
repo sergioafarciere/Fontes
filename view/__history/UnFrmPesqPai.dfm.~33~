@@ -1,0 +1,124 @@
+object frmPesqPai: TfrmPesqPai
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'FormularioPesquisaPai'
+  ClientHeight = 490
+  ClientWidth = 804
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  OnKeyPress = NavegarEnter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lblEntrePesquisaCodigo: TLabel
+    Left = 277
+    Top = 93
+    Width = 26
+    Height = 13
+    Caption = 'Entre'
+  end
+  object DBGrid1: TDBGrid
+    Left = 24
+    Top = 112
+    Width = 729
+    Height = 329
+    DataSource = dstPesquisa
+    TabOrder = 5
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object pnlPesquisaTop: TPanel
+    Left = 0
+    Top = 0
+    Width = 804
+    Height = 33
+    Align = alTop
+    TabOrder = 6
+  end
+  object pnlPesquisaBottom: TPanel
+    Left = 0
+    Top = 464
+    Width = 804
+    Height = 26
+    Align = alBottom
+    TabOrder = 7
+  end
+  object rdgFiltroPesquisa: TRadioGroup
+    Left = 24
+    Top = 55
+    Width = 177
+    Height = 51
+    Caption = 'Filtros de Pesquisa'
+    Items.Strings = (
+      'C'#243'digo'
+      'Data')
+    TabOrder = 0
+    OnClick = ValidarFiltro
+  end
+  object btnPesquisar: TBitBtn
+    Left = 378
+    Top = 83
+    Width = 75
+    Height = 25
+    Caption = 'Pesquisar'
+    TabOrder = 4
+    Glyph.Data = {
+      52020000424D5202000000000000520100002800000010000000100000000100
+      08000000000000010000340B0000340B00004700000047000000405058009860
+      580031486000EAAB6A00A17373008F7B7300B67B7300A1847300AB847300F4AB
+      7300AB7B7B00B67B7B00C07B7B00B6847B00C0987B00F4C07B00B68F8400C08F
+      8400CA8F8400B6988400C0988400CA988400F4C08400F4CA840031608F00C098
+      8F00CAA18F00D4AB8F00F4CA8F00D4AB9800D4B69800E0B69800FFD49800FFE0
+      9800C0A1A100F4D4A100F4E0A100FFE0A100FFEAA100CAABAB00D4CAAB00E0D4
+      AB00FFE0AB005084B600EAD4B600FFEAB600FFF4B600F4E0C000FFF4C000F4EA
+      CA00F4F4CA00FFF4CA00FFFFCA00116AD400F4F4D400FFFFD4000B6AE0000B73
+      E000FFFFE0000B73EA001173EA00A1CAEA00F4F4EA00FFF4EA00FFFFEA00FFFF
+      F400FF00FF0031A1FF0038A1FF0038ABFF00FFFFFF0042020A42424242424242
+      4242424242422B39180B42424242424242424242424243443C180B4242424242
+      42424242424242444438180B424242424242424242424242444339180A424242
+      424242424242424242444335004201101A114242424242424242453D05072F34
+      3434291942424242424242221A2D34343437403E0442424242424206231C3034
+      37404146284242424242421B210F30373A414140310D42424242421F20032434
+      373A3A37321342424242421D25030F2D37373737311042424242420D2D2D1C16
+      2430333429424242424242421E463F0F0316252E08424242424242424227312D
+      21252314424242424242424242420E141B1B42424242}
+  end
+  object edtCodigoInicial: TEdit
+    Left = 206
+    Top = 85
+    Width = 66
+    Height = 21
+    TabOrder = 1
+  end
+  object edtCodigoFinal: TEdit
+    Left = 306
+    Top = 85
+    Width = 72
+    Height = 21
+    TabOrder = 2
+  end
+  object mskDataPesquisa: TMaskEdit
+    Left = 257
+    Top = 58
+    Width = 64
+    Height = 21
+    EditMask = '!99/99/0000;0;_'
+    MaxLength = 10
+    TabOrder = 3
+  end
+  object dstPesquisa: TDataSource
+    DataSet = dmConexao.cdsSelect
+    Left = 576
+    Top = 72
+  end
+end

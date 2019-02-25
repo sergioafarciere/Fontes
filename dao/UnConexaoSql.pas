@@ -34,7 +34,6 @@ type
     dstSelectESCCOMP: TStringField;
     dstSelectESCEMAIL: TStringField;
     dstSelectESCCONT: TStringField;
-    dstSelectESCTEL: TIntegerField;
     dstSelectESCOBS: TStringField;
     cdsSelectESCCEP: TIntegerField;
     cdsSelectESCUF: TStringField;
@@ -47,11 +46,15 @@ type
     cdsSelectESCCONT: TStringField;
     cdsSelectESCTEL: TIntegerField;
     cdsSelectESCOBS: TStringField;
+    dstSelectESCDATCAD: TSQLTimeStampField;
+    dstSelectESCTEL: TStringField;
+//    procedure DataModuleCreate(Sender: TObject);
 
   private
     { Private declarations }
   public
     function gerarId : Integer;
+//    function ObterDataAtual : TDateTime;
     function Inserir(oEscola : TEscola; out sErro: string): Boolean;
     function Alterar(oEscola : TEscola; out sErro: string): Boolean;
     function Excluir(iCodigo : Integer; out sErro: string): Boolean;
@@ -85,6 +88,15 @@ end;
 end;
 {$ENDREGION}
 
+{$Region'OBTER DATA ATUAL'}
+//function TdmConexao.ObterDataAtual: TDateTime;
+//begin
+////  cdsSelect.Open;
+////  cdsSelectESCDATCAD.AsDateTime := Date;
+////  Result := cdsSelect.FieldByName('ESCDATCAD').AsDateTime;
+//end;
+{$endregion}
+
 {$REGION'METODO INSERIR'}
 function TdmConexao.Inserir(oEscola: TEscola; out sErro: string): Boolean;
 begin
@@ -101,9 +113,9 @@ begin
   dstInsert.ParamByName('ESCCOMP').AsString := oEscola.Complemento;
   dstInsert.ParamByName('ESCEMAIL').AsString := oEscola.Email;
   dstInsert.ParamByName('ESCCONT').AsString := oEscola.Contato;
-  dstInsert.ParamByName('ESCTEL').AsInteger := oEscola.Telefone;
+  dstInsert.ParamByName('ESCTEL').AsString := oEscola.Telefone;
   dstInsert.ParamByName('ESCOBS').AsString := oEscola.Observacao;
-//  dstInsert.ParamByName('ESCDATCAD').AsDateTime := oEscola.DataCadastro;
+  dstInsert.ParamByName('ESCDATCAD').AsString := DateToStr(oEscola.ObterDataCadastro);
   try
     dstInsert.ExecSQL();
     Result := True;
@@ -114,7 +126,6 @@ begin
     end;
  end;
 end;
-
 
 {$ENDREGION}
 
@@ -133,7 +144,7 @@ begin
   dstUpdate.ParamByName('ESCCOMP').AsString := oEscola.Complemento;
   dstUpdate.ParamByName('ESCEMAIL').AsString := oEscola.Email;
   dstUpdate.ParamByName('ESCCONT').AsString := oEscola.Contato;
-  dstUpdate.ParamByName('ESCTEL').AsInteger := oEscola.Telefone;
+  dstUpdate.ParamByName('ESCTEL').AsString := oEscola.Telefone;
   dstUpdate.ParamByName('ESCOBS').AsString := oEscola.Observacao;
   dstUpdate.ParamByName('ID').AsInteger := oEscola.ID;
   try
@@ -188,7 +199,7 @@ begin
       Complemento := sqlEscola.FieldByName('ESCCOMP').AsString;
       Email := sqlEscola.FieldByName('ESCEMAIL').AsString;
       Contato := sqlEscola.FieldByName('ESCCONT').AsString;
-      Telefone := sqlEscola.FieldByName('ESCTEL').AsInteger;
+      Telefone := sqlEscola.FieldByName('ESCTEL').AsString;
       Observacao := sqlEscola.FieldByName('ESCOBS').AsString;
     end;
   finally
