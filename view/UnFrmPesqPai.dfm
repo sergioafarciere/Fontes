@@ -13,13 +13,15 @@ object frmPesqPai: TfrmPesqPai
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyPress = NavegarEnter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object lblEntrePesquisaCodigo: TLabel
     Left = 277
-    Top = 93
+    Top = 89
     Width = 26
     Height = 13
     Caption = 'Entre'
@@ -44,7 +46,6 @@ object frmPesqPai: TfrmPesqPai
     Height = 33
     Align = alTop
     TabOrder = 10
-    ExplicitWidth = 804
   end
   object pnlPesquisaBottom: TPanel
     Left = 0
@@ -53,8 +54,6 @@ object frmPesqPai: TfrmPesqPai
     Height = 26
     Align = alBottom
     TabOrder = 11
-    ExplicitTop = 464
-    ExplicitWidth = 804
   end
   object rdgFiltroPesquisa: TRadioGroup
     Left = 24
@@ -110,15 +109,6 @@ object frmPesqPai: TfrmPesqPai
     Height = 21
     TabOrder = 2
   end
-  object mskDataIncial: TMaskEdit
-    Left = 207
-    Top = 58
-    Width = 64
-    Height = 21
-    EditMask = '!99/99/0000;0;_'
-    MaxLength = 10
-    TabOrder = 3
-  end
   object btnImprimir: TBitBtn
     Left = 678
     Top = 83
@@ -153,6 +143,7 @@ object frmPesqPai: TfrmPesqPai
     Height = 25
     Caption = 'Sair'
     TabOrder = 8
+    OnClick = btnSairClick
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -216,16 +207,26 @@ object frmPesqPai: TfrmPesqPai
       E8FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF3B94F061ABF665
       ADF7489EF42286EC127AE4FF00FFFF00FFFF00FFFF00FFFF00FF}
   end
-  object mskDataFinal: TMaskEdit
-    Left = 306
-    Top = 58
-    Width = 64
+  object dtpDataInicial: TDateTimePicker
+    Left = 207
+    Top = 31
+    Width = 97
     Height = 21
-    EditMask = '!99/99/0000;0;_'
-    MaxLength = 10
+    Date = 43522.000000000000000000
+    Time = 43522.000000000000000000
+    TabOrder = 3
+  end
+  object dtpDataFinal: TDateTimePicker
+    Left = 310
+    Top = 31
+    Width = 97
+    Height = 21
+    Date = 43522.999988425920000000
+    Time = 43522.999988425920000000
     TabOrder = 4
   end
   object dstPesquisa: TDataSource
+    AutoEdit = False
     DataSet = dmConexao.cdsSelect
     Left = 576
     Top = 72

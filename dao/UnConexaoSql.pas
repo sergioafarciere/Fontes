@@ -44,21 +44,19 @@ type
     cdsSelectESCCOMP: TStringField;
     cdsSelectESCEMAIL: TStringField;
     cdsSelectESCCONT: TStringField;
-    cdsSelectESCTEL: TIntegerField;
     cdsSelectESCOBS: TStringField;
     dstSelectESCDATCAD: TSQLTimeStampField;
     dstSelectESCTEL: TStringField;
-//    procedure DataModuleCreate(Sender: TObject);
-
+    cdsSelectESCTEL: TStringField;
   private
     { Private declarations }
   public
     function gerarId : Integer;
-//    function ObterDataAtual : TDateTime;
     function Inserir(oEscola : TEscola; out sErro: string): Boolean;
     function Alterar(oEscola : TEscola; out sErro: string): Boolean;
     function Excluir(iCodigo : Integer; out sErro: string): Boolean;
-    procedure Pesquisar(sNome: string);
+    procedure PesquisarCodigo(iCodigo1, iCodigo2: Integer);
+    procedure PesquisarData(aDataInicial, aDataFinal : string);
     procedure CarregarDados(oEscola :TEscola; iCodigo: Integer);
   end;
 var
@@ -209,15 +207,22 @@ end;
 
 {$ENDREGION}
 
-{$REGION'METODO PESQUISAR'}
-procedure TdmConexao.Pesquisar(sNome: string);
+{$REGION'METODO PESQUISAR POR CODIGO'}
+procedure TdmConexao.PesquisarCodigo(iCodigo1, iCodigo2: integer);
 begin
-  if cdsSelect.Active then
-    cdsSelect.Close;
-    cdsSelect.Params.ParamByName('ESCNOME').AsString := '%' + sNome + '%';
-    cdsSelect.Open;
-    cdsSelect.First;
+  cdsSelect.Close;
+  cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
+  cdsSelect.Open;
   end;
+{$ENDREGION}
+
+{$REGION'METODO PESUISAR POR DATA'}
+procedure TdmConexao.PesquisarData(aDataInicial, aDataFinal: string);
+begin
+  cdsSelect.Close;
+  cdsSelect.CommandText := 'select * from ESCOLA where ESCDATCAD between' + QuotedStr(aDataInicial) + ' and ' + QuotedStr(aDataFinal) + ' order by ID';
+  cdsSelect.Open;
+end;
 {$ENDREGION}
 
 end.

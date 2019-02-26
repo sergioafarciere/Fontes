@@ -57,6 +57,7 @@ type
   public
     FOperacao: TOperacao;
     procedure habilitarComandos(aOperacao : TOperacao);
+    function validarCampos : Boolean;
   end;
 
 var
@@ -142,7 +143,7 @@ end;
 procedure TfrmPai.NavegarEnter(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
-  Perform(WM_NEXTDLGCTL,0,0);
+    Perform(WM_NEXTDLGCTL,0,0);
 end;
 
 procedure TfrmPai.limparCampos;
@@ -161,6 +162,54 @@ begin
     if Components[loop] is (TCheckBox) then
       (Components[loop] as TCheckBox).Checked := False;
   end;
+end;
+
+function TfrmPai.validarCampos:Boolean;
+var
+  loop : Integer;
+  MSG : string;
+begin
+  Result := False;
+  MSG := EmptyStr;
+  for loop := 0 to ComponentCount - 1 do
+    begin
+      if Components[loop].ClassType = TEdit then
+        if (TEdit(Components[loop]).Text = EmptyStr) and (TEdit(Components[loop]).Tag = 1) then
+        begin
+          Result := True;
+          MessageDlg('Campo Obrigatório',mtInformation,[mbOK],0);
+          Msg := Msg + #13 + '-  ' + TEdit(Components[loop]).Name;
+          Break;
+        end; 
+      if Components[loop].ClassType = TComboBox then
+        if (TComboBox(Components[loop]).Text = EmptyStr) and (TComboBox(Components[loop]).Tag = 1) then
+        begin
+          Result := True;
+          MessageDlg('Campo Obrigatório',mtInformation,[mbOK],0);
+          Msg := Msg + #13 + '-  ' + TEdit(Components[loop]).Name;
+          Break;
+        end;
+      if Components[loop].ClassType = TMemo then
+        if (TMemo(Components[loop]).Text = EmptyStr) and (TMemo(Components[loop]).Tag = 1) then
+        begin
+          Result := True;
+          MessageDlg('Campo Obrigatório',mtInformation,[mbOK],0);
+  //        TMemo(Components[loop]).SetFocus;
+          Msg := Msg + #13 + '-  ' + TEdit(Components[loop]).Name;
+          Break;
+        end;
+      if Components[loop].ClassType = TMaskEdit then
+        if (TMaskEdit(Components[loop]).Text = EmptyStr) and (TMaskEdit(Components[loop]).Tag = 1) then
+        begin
+          Result := True;
+          MessageDlg('Campo Obrigatório',mtInformation,[mbOK],0);
+  //        TMaskEdit(Components[loop]).SetFocus;
+          Msg := Msg + #13 + '-  ' + TEdit(Components[loop]).Name;
+          Break;
+        end;
+    end;
+    if Result = True then 
+    MessageDlg('Campo(s) obrigatório(s):' + #13 + #13 + Trim(Msg), mtError, [mbOk], 0);
 end;
 
 procedure TfrmPai.mascaraCPFCNPJ(Sender: TObject);

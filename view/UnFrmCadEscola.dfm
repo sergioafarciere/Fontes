@@ -1,5 +1,7 @@
 inherited frmCadEscola: TfrmCadEscola
   Caption = 'Cadastro de Escola'
+  ExplicitWidth = 746
+  ExplicitHeight = 490
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlTopPai: TPanel
@@ -23,8 +25,9 @@ inherited frmCadEscola: TfrmCadEscola
     end
   end
   inherited edtCodigo: TEdit
+    Tag = 0
     Left = 27
-    OnKeyPress = edtCodigoKeyPress
+    OnKeyPress = ConsultandoEscola
     ExplicitLeft = 27
   end
   inherited edtEmail: TEdit

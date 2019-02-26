@@ -19,8 +19,7 @@ inherited frmPesqEscola: TfrmPesqEscola
     ExplicitTop = 496
     ExplicitWidth = 775
   end
-  inherited mskDataIncial: TMaskEdit
-    Left = 236
-    ExplicitLeft = 236
+  inherited btnPesquisar: TBitBtn
+    OnClick = btnPesquisarClick
   end
 end

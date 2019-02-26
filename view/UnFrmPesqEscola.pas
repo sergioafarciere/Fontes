@@ -5,13 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UnFrmPesqPai, StdCtrls, Buttons, UnModelEscola, UnControllerEscola,
-  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls;
+  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls;
 
 type
   TfrmPesqEscola = class(TfrmPesqPai)
     procedure btnPesquisarClick(Sender: TObject);
   private
-    procedure pesquisa;
+    procedure pesquisaCodigo;
+    procedure pesquisaData;
   public
     { Public declarations }
   end;
@@ -27,23 +28,35 @@ implementation
 
 procedure TfrmPesqEscola.btnPesquisarClick(Sender: TObject);
 begin
-  pesquisa;
+  case rdgFiltroPesquisa.ItemIndex of
+  0 : pesquisaCodigo;
+  1 : pesquisaData;
+  end;
 end;
 
-procedure TfrmPesqEscola.pesquisa;
+procedure TfrmPesqEscola.pesquisaCodigo;
 var
-  oEscola : TEscola;
   oEscolaController : TEscolaController;
 begin
   oEscolaController := TEscolaController.Create;
-  oEscola := TEscola.Create;
   try
-//    oEscola.Nome := edtPesquisar.Text;
-//    oEscolaController.Pesquisar;
+    oEscolaController.PesquisarCodigo(StrToInt(edtCodigoInicial.Text),StrToInt(edtCodigoFinal.Text));
   finally
-  FreeAndNil(oEscolaController);
+    FreeAndNil(oEscolaController);            
   end;
 
+end;
+
+procedure TfrmPesqEscola.pesquisaData;
+var
+  oEscolaController : TEscolaController;
+begin
+  oEscolaController := TEscolaController.Create;
+  try
+    oEscolaController.PesquisarData(DateTimeToStr(dtpDataInicial.Date),DateTimeToStr(dtpDataFinal.Date));
+  finally
+    FreeAndNil(oEscolaController);
+  end;
 end;
 
 end.

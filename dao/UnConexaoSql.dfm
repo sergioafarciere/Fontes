@@ -31,12 +31,7 @@ object dmConexao: TdmConexao
     CommandText = 'select * from ESCOLA'
     DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftString
-        Name = 'ESCNOME'
-        ParamType = ptInput
-      end>
+    Params = <>
     SQLConnection = sqlConexao
     Left = 24
     Top = 80
@@ -317,6 +312,7 @@ object dmConexao: TdmConexao
   end
   object dspSelect: TDataSetProvider
     DataSet = dstSelect
+    Options = [poAllowCommandText, poUseQuoteChar]
     Left = 24
     Top = 152
   end
@@ -382,12 +378,13 @@ object dmConexao: TdmConexao
     object cdsSelectESCCONT: TStringField
       FieldName = 'ESCCONT'
     end
-    object cdsSelectESCTEL: TIntegerField
-      FieldName = 'ESCTEL'
-    end
     object cdsSelectESCOBS: TStringField
       FieldName = 'ESCOBS'
       Size = 150
+    end
+    object cdsSelectESCTEL: TStringField
+      FieldName = 'ESCTEL'
+      Size = 12
     end
   end
 end
