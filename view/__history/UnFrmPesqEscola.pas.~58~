@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UnFrmPesqPai, StdCtrls, Buttons, UnModelEscola, UnControllerEscola,
-  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls, UnConexaoSql;
+  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls;
 
 type
   TfrmPesqEscola = class(TfrmPesqPai)
     procedure btnPesquisarClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
   private
     procedure pesquisaCodigo;
     procedure pesquisaData;
@@ -26,7 +27,13 @@ implementation
 
 { TfrmPesqEscola }
 
-procedure TfrmPesqEscola.btnPesquisarClick(Sender: TObject);
+pprocedure TfrmPesqEscola.btnImprimirClick(Sender: TObject);
+begin
+  inherited;
+
+end;
+
+rocedure TfrmPesqEscola.btnPesquisarClick(Sender: TObject);
 begin
   case rdgFiltroPesquisa.ItemIndex of
   0 : pesquisaCodigo;
@@ -41,6 +48,7 @@ begin
   oEscolaController := TEscolaController.Create;
   try
     oEscolaController.PesquisarCodigo(StrToInt(edtCodigoInicial.Text),StrToInt(edtCodigoFinal.Text));
+//    MessageDlg('Escola não encontrada!',mtInformation,[mbOK],0);
   finally
     FreeAndNil(oEscolaController);            
   end;

@@ -1,0 +1,72 @@
+unit UnFrmRelatorioEscola;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RLReport, DB, unFrmPesqEscola, UnConexaoSql;
+
+type
+  TfrmRelEscola = class(TForm)
+    rlrRelatorioDeEscolas: TRLReport;
+    RLBand1: TRLBand;
+    RLLabel1: TRLLabel;
+    RLDraw1: TRLDraw;
+    RLBand2: TRLBand;
+    RLLabel2: TRLLabel;
+    RLLabel3: TRLLabel;
+    RLLabel4: TRLLabel;
+    RLLabel5: TRLLabel;
+    RLLabel6: TRLLabel;
+    RLLabel7: TRLLabel;
+    RLLabel8: TRLLabel;
+    RLLabel9: TRLLabel;
+    RLLabel10: TRLLabel;
+    RLLabel11: TRLLabel;
+    RLDraw2: TRLDraw;
+    RLBand4: TRLBand;
+    RLSystemInfo1: TRLSystemInfo;
+    RLLabel12: TRLLabel;
+    RLSystemInfo2: TRLSystemInfo;
+    RLLabel13: TRLLabel;
+    RLSystemInfo3: TRLSystemInfo;
+    RLLabel14: TRLLabel;
+    RLSystemInfo4: TRLSystemInfo;
+    RLLabel15: TRLLabel;
+    RLLabel16: TRLLabel;
+    RLLabel17: TRLLabel;
+    RLLabel18: TRLLabel;
+    RLLabel19: TRLLabel;
+    RLLabel20: TRLLabel;
+    RLDBText1: TRLDBText;
+    RLDBText11: TRLDBText;
+    RLDBText2: TRLDBText;
+    RLDBText12: TRLDBText;
+    RLDBText4: TRLDBText;
+    RLDBText7: TRLDBText;
+    RLDBText14: TRLDBText;
+    RLDBText15: TRLDBText;
+    RLDBText5: TRLDBText;
+    RLDBText8: TRLDBText;
+    RLDBText6: TRLDBText;
+    RLDBText9: TRLDBText;
+    RLDBText3: TRLDBText;
+    RLDBText13: TRLDBText;
+    RLDBText16: TRLDBText;
+    RLDBText10: TRLDBText;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRelEscola: TfrmRelEscola;
+
+implementation
+
+
+
+{$R *.dfm}
+
+end.

@@ -56,5 +56,8 @@
     <DCCReference Include="view\UnFrmPrincipal.pas">
       <Form>frmPrincipal</Form>
     </DCCReference>
+    <DCCReference Include="view\UnFrmRelatorioEscola.pas">
+      <Form>frmRelEscola</Form>
+    </DCCReference>
   </ItemGroup>
 </Project>

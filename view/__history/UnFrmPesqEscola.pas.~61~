@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UnFrmPesqPai, StdCtrls, Buttons, UnModelEscola, UnControllerEscola,
-  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls, UnConexaoSql;
+  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls;
 
 type
   TfrmPesqEscola = class(TfrmPesqPai)

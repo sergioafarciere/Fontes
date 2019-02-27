@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UnFrmPesqPai, StdCtrls, Buttons, UnModelEscola, UnControllerEscola,
-  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls, UnConexaoSql;
+  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls;
 
 type
   TfrmPesqEscola = class(TfrmPesqPai)
@@ -41,6 +41,7 @@ begin
   oEscolaController := TEscolaController.Create;
   try
     oEscolaController.PesquisarCodigo(StrToInt(edtCodigoInicial.Text),StrToInt(edtCodigoFinal.Text));
+//    MessageDlg('Escola não encontrada!',mtInformation,[mbOK],0);
   finally
     FreeAndNil(oEscolaController);            
   end;

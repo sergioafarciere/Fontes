@@ -54,11 +54,12 @@ procedure TfrmPesqPai.btnImprimirClick(Sender: TObject);
 begin
   frmRelEscola := TfrmRelEscola.Create(nil);
   try
-    frmRelEscola.rlrRelatorioDeEscolas.Preview;
+    frmRelEscola := 
   finally
-    FreeAndNil(frmRelEscola);
   end;
 end;
+
+
 
 {$ENDREGION}
 

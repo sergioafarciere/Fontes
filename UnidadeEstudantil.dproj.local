@@ -33,5 +33,7 @@
     <Transaction>2019/02/13 00:02:05.664.dfm,C:\Users\sergi\Documents\Fontes\Unit1.dfm=C:\Users\sergi\Documents\Fontes\view\UnFrmPesqEscola.dfm</Transaction>
     <Transaction>2019/02/13 10:29:35.194.pas,C:\Users\sergi\Documents\Fontes\Unit1.pas=C:\Users\sergi\Documents\Fontes\dao\UnEscolaDAO.pas</Transaction>
     <Transaction>2019/02/18 10:57:55.912.pas,C:\Users\sergi\Documents\Fontes\dao\UnEscolaDAO.pas=</Transaction>
+    <Transaction>2019/02/27 10:53:16.091.pas,C:\Users\sergi\Documents\Fontes\Unit1.pas=C:\Users\sergi\Documents\Fontes\view\UnFrmRelatorioEscola.pas</Transaction>
+    <Transaction>2019/02/27 10:53:16.091.dfm,C:\Users\sergi\Documents\Fontes\Unit1.dfm=C:\Users\sergi\Documents\Fontes\view\UnFrmRelatorioEscola.dfm</Transaction>
   </Transactions>
 </BorlandProject>

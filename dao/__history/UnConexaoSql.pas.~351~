@@ -201,9 +201,9 @@ end;
 {$REGION'METODO PESQUISAR POR CODIGO'}
 procedure TdmConexao.PesquisarCodigo(iCodigo1, iCodigo2: integer);
 begin
-    cdsSelect.Close;
-    cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
-    cdsSelect.Open;
+  cdsSelect.Close;
+  cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
+  cdsSelect.Open;
   end;
 {$ENDREGION}
 

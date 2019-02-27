@@ -201,9 +201,13 @@ end;
 {$REGION'METODO PESQUISAR POR CODIGO'}
 procedure TdmConexao.PesquisarCodigo(iCodigo1, iCodigo2: integer);
 begin
+  try
     cdsSelect.Close;
     cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
     cdsSelect.Open;
+  except on E: Exception do
+  end;
+
   end;
 {$ENDREGION}
 

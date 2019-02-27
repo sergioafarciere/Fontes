@@ -10,6 +10,7 @@ uses
 type
   TfrmPesqEscola = class(TfrmPesqPai)
     procedure btnPesquisarClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
   private
     procedure pesquisaCodigo;
     procedure pesquisaData;
