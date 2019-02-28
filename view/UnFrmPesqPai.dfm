@@ -32,6 +32,7 @@ object frmPesqPai: TfrmPesqPai
     Width = 729
     Height = 329
     DataSource = dstPesquisa
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
     TabOrder = 8
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -101,13 +102,15 @@ object frmPesqPai: TfrmPesqPai
     Width = 66
     Height = 21
     TabOrder = 1
+    OnKeyPress = SomenteNumeros
   end
   object edtCodigoFinal: TEdit
     Left = 306
     Top = 85
-    Width = 72
+    Width = 65
     Height = 21
     TabOrder = 2
+    OnKeyPress = SomenteNumeros
   end
   object btnImprimir: TBitBtn
     Left = 678

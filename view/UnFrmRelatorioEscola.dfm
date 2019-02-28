@@ -3,7 +3,7 @@ object frmRelEscola: TfrmRelEscola
   Top = 0
   Caption = 'Relat'#243'rio de Cadastro de Escola'
   ClientHeight = 552
-  ClientWidth = 792
+  ClientWidth = 796
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,6 +18,7 @@ object frmRelEscola: TfrmRelEscola
     Top = -3
     Width = 794
     Height = 1123
+    DataSource = frmPesqEscola.dstPesquisa
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -52,7 +53,7 @@ object frmRelEscola: TfrmRelEscola
     end
     object RLBand4: TRLBand
       Left = 38
-      Top = 163
+      Top = 190
       Width = 718
       Height = 32
       BandType = btFooter
@@ -151,15 +152,14 @@ object frmRelEscola: TfrmRelEscola
       Left = 38
       Top = 73
       Width = 718
-      Height = 90
-      BandType = btColumnHeader
+      Height = 96
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -9
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      object RLLabel37: TRLLabel
+      object RLLabel22: TRLLabel
         Left = 3
         Top = 5
         Width = 44
@@ -172,7 +172,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel38: TRLLabel
+      object RLLabel23: TRLLabel
         Left = 229
         Top = 5
         Width = 33
@@ -185,7 +185,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel39: TRLLabel
+      object RLLabel24: TRLLabel
         Left = 3
         Top = 23
         Width = 58
@@ -198,7 +198,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel40: TRLLabel
+      object RLLabel25: TRLLabel
         Left = 546
         Top = 37
         Width = 25
@@ -211,7 +211,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel41: TRLLabel
+      object RLLabel26: TRLLabel
         Left = 347
         Top = 23
         Width = 47
@@ -224,7 +224,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel42: TRLLabel
+      object RLLabel27: TRLLabel
         Left = 347
         Top = 36
         Width = 42
@@ -237,7 +237,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel43: TRLLabel
+      object RLLabel28: TRLLabel
         Left = 3
         Top = 36
         Width = 41
@@ -250,7 +250,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel44: TRLLabel
+      object RLLabel29: TRLLabel
         Left = 465
         Top = 23
         Width = 77
@@ -263,7 +263,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel45: TRLLabel
+      object RLLabel30: TRLLabel
         Left = 465
         Top = 37
         Width = 20
@@ -276,7 +276,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel46: TRLLabel
+      object RLLabel31: TRLLabel
         Left = 3
         Top = 74
         Width = 96
@@ -291,12 +291,12 @@ object frmRelEscola: TfrmRelEscola
       end
       object RLDraw3: TRLDraw
         Left = 3
-        Top = 85
+        Top = 91
         Width = 718
-        Height = 10
+        Height = 4
         DrawKind = dkLine
       end
-      object RLLabel47: TRLLabel
+      object RLLabel32: TRLLabel
         Left = 99
         Top = 5
         Width = 62
@@ -309,7 +309,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel48: TRLLabel
+      object RLLabel33: TRLLabel
         Left = 562
         Top = 6
         Width = 53
@@ -322,7 +322,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel49: TRLLabel
+      object RLLabel34: TRLLabel
         Left = 256
         Top = 50
         Width = 36
@@ -335,7 +335,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel50: TRLLabel
+      object RLLabel35: TRLLabel
         Left = 3
         Top = 49
         Width = 49
@@ -348,7 +348,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel51: TRLLabel
+      object RLLabel36: TRLLabel
         Left = 3
         Top = 64
         Width = 32
@@ -361,7 +361,7 @@ object frmRelEscola: TfrmRelEscola
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLLabel52: TRLLabel
+      object RLLabel37: TRLLabel
         Left = 256
         Top = 64
         Width = 69
@@ -596,6 +596,41 @@ object frmRelEscola: TfrmRelEscola
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        ParentFont = False
+      end
+    end
+    object RLBand6: TRLBand
+      Left = 38
+      Top = 169
+      Width = 718
+      Height = 21
+      BandType = btSummary
+      object RLDBResult1: TRLDBResult
+        Left = 651
+        Top = 6
+        Width = 34
+        Height = 12
+        DataField = 'ID'
+        DataSource = frmPesqEscola.dstPesquisa
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = []
+        Info = riCount
+        ParentFont = False
+      end
+      object RLLabel38: TRLLabel
+        Left = 617
+        Top = 6
+        Width = 28
+        Height = 11
+        Caption = 'Total:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
         ParentFont = False
       end
     end

@@ -15,6 +15,7 @@ type
        function RetornarId : Integer;
        procedure PesquisarCodigo(iCodigo1, iCodigo2: Integer);
        procedure PesquisarData(DataInicial, DataFinal: string);
+//       function Pesquisar(iCodigo1, iCodigo2: Integer; var sErro: string) : Boolean;
        procedure CarregarEscola(oEscola : TEscola; iCodigo: Integer);
      end;
 
@@ -56,6 +57,12 @@ procedure TEscolaController.PesquisarCodigo(iCodigo1, iCodigo2 : Integer);
 begin
   dmConexao.PesquisarCodigo(iCodigo1,iCodigo2);
 end;
+
+//function TEscolaController.Pesquisar(iCodigo1, iCodigo2: Integer; var sErro: string): Boolean;
+//begin
+//  Result := dmConexao.Pesquisar(iCodigo1,iCodigo2,sErro);
+//end;
+
 {$ENDREGION}
 
 {$region'CONTROLLER PESQUISAR POR DATA'}

@@ -1,0 +1,58 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  BiDiMode = bdLeftToRight
+  BorderIcons = [biMinimize, biMaximize]
+  Caption = 'Gest'#227'o Escolar'
+  ClientHeight = 394
+  ClientWidth = 734
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = mMenuPrincipal
+  OldCreateOrder = False
+  ParentBiDiMode = False
+  WindowState = wsMaximized
+  PixelsPerInch = 96
+  TextHeight = 13
+  object mMenuPrincipal: TMainMenu
+    object tmCadPrincipal: TMenuItem
+      Caption = 'Cadastro'
+      object tmCadEscolaPrincipal: TMenuItem
+        Caption = 'Escola'
+        OnClick = tmCadEscolaPrincipalClick
+      end
+      object tmCadAlunoPrincipal: TMenuItem
+        Caption = 'Aluno'
+        OnClick = tmCadAlunoPrincipalClick
+      end
+      object tmCadProfessorPrincipal: TMenuItem
+        Caption = 'Professor'
+      end
+      object tmCadDisciplicaPrincipal: TMenuItem
+        Caption = 'Disciplina'
+      end
+    end
+    object Pesquisar1: TMenuItem
+      Caption = '&Pesquisar'
+      object Escola1: TMenuItem
+        Caption = 'Escola'
+        OnClick = Escola1Click
+      end
+    end
+    object Relatrio1: TMenuItem
+      Caption = 'Relat'#243'rio'
+      object Escola2: TMenuItem
+        Caption = 'Escola'
+        OnClick = Escola2Click
+      end
+    end
+    object tmSairPrincipal: TMenuItem
+      Caption = 'Sair'
+      OnClick = tmSairPrincipalClick
+    end
+  end
+end

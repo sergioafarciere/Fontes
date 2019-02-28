@@ -31,6 +31,7 @@ type
     procedure Sair;
     procedure btnSairClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
+    procedure SomenteNumeros(Sender: TObject; var Key: Char);
   public
 //    FOperacao: TOperacao;
 //    procedure habilitarComandos(aOperacao : TOperacao);
@@ -60,6 +61,7 @@ begin
   end;
 end;
 
+
 {$ENDREGION}
 
 {$REGION'CONTROLE DE TELA'}
@@ -87,6 +89,16 @@ begin
   begin
     Perform(WM_NEXTDLGCTL,0,0);
   end;
+end;
+
+procedure TfrmPesqPai.SomenteNumeros(Sender: TObject; var Key: Char);
+begin
+  if (key in ['0'..'9','8']) and (Key = #13) then
+  begin
+    Perform(WM_NEXTDLGCTL,0,0);
+  end;
+   MessageDlg('Somente Números',mtInformation,[mbOK],0);
+   Perform(WM_NEXTDLGCTL,1,0);
 end;
 
 procedure TfrmPesqPai.Sair;

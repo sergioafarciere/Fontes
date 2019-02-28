@@ -57,6 +57,7 @@ type
     function Excluir(iCodigo : Integer; out sErro: string): Boolean;
     procedure PesquisarCodigo(iCodigo1, iCodigo2: Integer);
     procedure PesquisarData(aDataInicial, aDataFinal : string);
+//    function Pesquisar(iCodigo1, iCodigo2: Integer; out sErro: string) : Boolean;
     procedure CarregarDados(oEscola :TEscola; iCodigo: Integer);
   end;
 var
@@ -200,19 +201,30 @@ end;
 
 {$REGION'METODO PESQUISAR POR CODIGO'}
 procedure TdmConexao.PesquisarCodigo(iCodigo1, iCodigo2: integer);
+var
+  sErro : string;
 begin
-    cdsSelect.Close;
-    cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
+  cdsSelect.Close;
+  cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
+  try
     cdsSelect.Open;
+  except on E: Exception do
+    begin
+    sErro := 'Não existem dados a serem consultados';
+    end;
   end;
+end;
 {$ENDREGION}
 
 {$REGION'METODO PESUISAR POR DATA'}
 procedure TdmConexao.PesquisarData(aDataInicial, aDataFinal: string);
 begin
-  cdsSelect.Close;
-  cdsSelect.CommandText := 'select * from ESCOLA where ESCDATCAD between' + QuotedStr(aDataInicial) + ' and ' + QuotedStr(aDataFinal) + ' order by ID';
-  cdsSelect.Open;
+if cdsSelect.RecordCount = 0 then
+  begin
+    cdsSelect.Close;
+    cdsSelect.CommandText := 'select * from ESCOLA where ESCDATCAD between' + QuotedStr(aDataInicial) + ' and ' + QuotedStr(aDataFinal) + ' order by ID';
+    cdsSelect.Open;
+  end
 end;
 {$ENDREGION}
 

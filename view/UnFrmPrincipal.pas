@@ -22,6 +22,7 @@ type
     procedure tmSairPrincipalClick(Sender: TObject);
     procedure conexaoSQL(Sender: TObject);
     procedure Escola1Click(Sender: TObject);
+    procedure Escola2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,6 +33,8 @@ var
   frmPrincipal: TfrmPrincipal;
 
 implementation
+
+uses UnFrmRelatorioEscola;
 
 
 {$R *.dfm}
@@ -61,6 +64,18 @@ FreeAndNil(frmPesqEscola);
 end;
   
 end;
+
+procedure TfrmPrincipal.Escola2Click(Sender: TObject);
+begin
+  frmRelEscola := TfrmRelEscola.Create(nil);
+  try
+    frmRelEscola.rlrRelatorioDeEscolas.Preview;
+  finally
+    FreeAndNil(frmRelEscola);
+  end;
+end;
+
+
 
 procedure TfrmPrincipal.tmCadAlunoPrincipalClick(Sender: TObject);
 var

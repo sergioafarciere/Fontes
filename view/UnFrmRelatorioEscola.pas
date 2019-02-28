@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DB, unFrmPesqEscola, UnConexaoSql;
+  Dialogs, RLReport, DB, unFrmPesqEscola, UnConexaoSql, FMTBcd, SqlExpr;
 
 type
   TfrmRelEscola = class(TForm)
@@ -21,23 +21,23 @@ type
     RLLabel14: TRLLabel;
     RLSystemInfo4: TRLSystemInfo;
     RLBand5: TRLBand;
-    RLLabel37: TRLLabel;
-    RLLabel38: TRLLabel;
-    RLLabel39: TRLLabel;
-    RLLabel40: TRLLabel;
-    RLLabel41: TRLLabel;
-    RLLabel42: TRLLabel;
-    RLLabel43: TRLLabel;
-    RLLabel44: TRLLabel;
-    RLLabel45: TRLLabel;
-    RLLabel46: TRLLabel;
+    RLLabel22: TRLLabel;
+    RLLabel23: TRLLabel;
+    RLLabel24: TRLLabel;
+    RLLabel25: TRLLabel;
+    RLLabel26: TRLLabel;
+    RLLabel27: TRLLabel;
+    RLLabel28: TRLLabel;
+    RLLabel29: TRLLabel;
+    RLLabel30: TRLLabel;
+    RLLabel31: TRLLabel;
     RLDraw3: TRLDraw;
-    RLLabel47: TRLLabel;
-    RLLabel48: TRLLabel;
-    RLLabel49: TRLLabel;
-    RLLabel50: TRLLabel;
-    RLLabel51: TRLLabel;
-    RLLabel52: TRLLabel;
+    RLLabel32: TRLLabel;
+    RLLabel33: TRLLabel;
+    RLLabel34: TRLLabel;
+    RLLabel35: TRLLabel;
+    RLLabel36: TRLLabel;
+    RLLabel37: TRLLabel;
     RLDBText17: TRLDBText;
     RLDBText18: TRLDBText;
     RLDBText19: TRLDBText;
@@ -54,6 +54,9 @@ type
     RLDBText30: TRLDBText;
     RLDBText31: TRLDBText;
     RLDBText32: TRLDBText;
+    RLBand6: TRLBand;
+    RLDBResult1: TRLDBResult;
+    RLLabel38: TRLLabel;
   private
     { Private declarations }
   public
