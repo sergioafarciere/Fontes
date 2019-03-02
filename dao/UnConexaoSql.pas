@@ -201,17 +201,13 @@ end;
 
 {$REGION'METODO PESQUISAR POR CODIGO'}
 procedure TdmConexao.PesquisarCodigo(iCodigo1, iCodigo2: integer);
-var
-  sErro : string;
 begin
   cdsSelect.Close;
   cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
   try
     cdsSelect.Open;
-  except on E: Exception do
-    begin
-    sErro := 'Não existem dados a serem consultados';
-    end;
+  except
+//    sErro;
   end;
 end;
 {$ENDREGION}

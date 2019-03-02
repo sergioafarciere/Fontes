@@ -50,14 +50,16 @@ type
     mskTelefone: TMaskEdit;
     procedure mascaraCPFCNPJ(Sender: TObject);
     procedure NavegarEnter(Sender: TObject; var Key: Char);
-    procedure limparCampos;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure CampoObrigatorio(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
   public
     FOperacao: TOperacao;
-    procedure habilitarComandos(aOperacao : TOperacao);
     function validarCampos : Boolean;
+    procedure limparCampos;
+    procedure habilitarComandos(aOperacao : TOperacao);
   end;
 
 var
@@ -152,14 +154,14 @@ var
 begin
   for loop := 0 to ComponentCount - 1 do
   begin
-    if Components[loop] is (TCustomEdit) then
+    if (Components[loop] is (TCustomEdit))  then
       TEdit(Components[loop] as TCustomEdit).Clear;
-    if Components[loop] is (TComboBox) then
+    if (Components[loop] is (TComboBox)) then
     begin
       (Components[loop] as TComboBox).ItemIndex := -1;
       (Components[loop] as TComboBox).Text := EmptyStr;
     end;
-    if Components[loop] is (TCheckBox) then
+    if (Components[loop] is (TCheckBox)) then
       (Components[loop] as TCheckBox).Checked := False;
   end;
 end;
@@ -227,6 +229,31 @@ begin
       mskCPFCNPJ.Width := 108
     end;
   end;
+
+procedure TfrmPai.btnSairClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja realmente sair?',mtConfirmation,[mbYes,mbNo],0) = IDYES then
+  begin
+    Close;
+  end;
+end;
+
+procedure TfrmPai.CampoObrigatorio(Sender: TObject);
+begin
+  if FOperacao = opNavegar then
+    begin
+      Abort;
+    end
+  else if (Trim(TEdit(Sender).Text) = EmptyStr) or (Trim(TMaskEdit(Sender).Text) = EmptyStr) then
+  begin
+    MessageDlg('Campo obrigatório!',mtInformation,[mbOK],0);
+    TEdit(Sender).SetFocus;
+  end
+  else
+    Perform(WM_NEXTDLGCTL,1,1);
+end;
+
+
 
 {$endregion}
 

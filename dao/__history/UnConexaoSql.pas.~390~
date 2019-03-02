@@ -1,0 +1,227 @@
+unit UnConexaoSql;
+
+interface
+
+uses
+
+  SysUtils, FMTBcd, DB, SqlExpr, DBClient, Provider, Classes, UnModelEscola,
+  WideStrings;
+
+type
+  TdmConexao = class(TDataModule)
+    sqlConexao: TSQLConnection;
+    dstSelect: TSQLDataSet;
+    dstInsert: TSQLDataSet;
+    dstUpdate: TSQLDataSet;
+    dstDelete: TSQLDataSet;
+    cdsSelect: TClientDataSet;
+    cdsSelectID: TIntegerField;
+    cdsSelectESCNOME: TStringField;
+    cdsSelectESCTIP: TStringField;
+    dstSelectID: TIntegerField;
+    dstSelectESCNOME: TStringField;
+    dstSelectESCTIP: TStringField;
+    dspSelect: TDataSetProvider;
+    dstSelectESCCPFCNPJ: TStringField;
+    cdsSelectESCCPFCNPJ: TStringField;
+    cdsSelectESCDATCAD: TSQLTimeStampField;
+    dstSelectESCCEP: TIntegerField;
+    dstSelectESCUF: TStringField;
+    dstSelectESCEND: TStringField;
+    dstSelectESCNUM: TStringField;
+    dstSelectESCBAI: TStringField;
+    dstSelectESCCID: TStringField;
+    dstSelectESCCOMP: TStringField;
+    dstSelectESCEMAIL: TStringField;
+    dstSelectESCCONT: TStringField;
+    dstSelectESCOBS: TStringField;
+    cdsSelectESCCEP: TIntegerField;
+    cdsSelectESCUF: TStringField;
+    cdsSelectESCEND: TStringField;
+    cdsSelectESCNUM: TStringField;
+    cdsSelectESCBAI: TStringField;
+    cdsSelectESCCID: TStringField;
+    cdsSelectESCCOMP: TStringField;
+    cdsSelectESCEMAIL: TStringField;
+    cdsSelectESCCONT: TStringField;
+    cdsSelectESCOBS: TStringField;
+    dstSelectESCDATCAD: TSQLTimeStampField;
+    dstSelectESCTEL: TStringField;
+    cdsSelectESCTEL: TStringField;
+  private
+    { Private declarations }
+  public
+    function gerarId : Integer;
+    function Inserir(oEscola : TEscola; out sErro: string): Boolean;
+    function Alterar(oEscola : TEscola; out sErro: string): Boolean;
+    function Excluir(iCodigo : Integer; out sErro: string): Boolean;
+    procedure PesquisarCodigo(iCodigo1, iCodigo2: Integer; out sErro);
+    procedure PesquisarData(aDataInicial, aDataFinal : string);
+//    function Pesquisar(iCodigo1, iCodigo2: Integer; out sErro: string) : Boolean;
+    procedure CarregarDados(oEscola :TEscola; iCodigo: Integer);
+  end;
+var
+  dmConexao: TdmConexao;
+
+implementation
+
+{$R *.dfm}
+
+{ TdmConexao }
+{$REGION'METODO GERAR ID'}
+function TdmConexao.gerarId: Integer;
+var
+ sqlsequencia : TSQLDataSet;
+ dmConexao: TdmConexao;
+begin
+sqlsequencia := TSQLDataSet.Create(nil);
+dmConexao := TdmConexao.Create(nil);
+try
+  sqlsequencia.SQLConnection := dmConexao.sqlConexao;
+  sqlsequencia.CommandText := 'select coalesce(max(ID),0) + 1 as ID from ESCOLA';
+  sqlsequencia.Open;
+  Result := sqlsequencia.FieldByName('ID').AsInteger;
+finally
+FreeAndNil(sqlsequencia);
+end;
+end;
+{$ENDREGION}
+
+{$REGION'METODO INSERIR'}
+function TdmConexao.Inserir(oEscola: TEscola; out sErro: string): Boolean;
+begin
+  dstInsert.ParamByName('ID').AsInteger := oEscola.ID;
+  dstInsert.ParamByName('ESCNOME').AsString := oEscola.Nome;
+  dstInsert.ParamByName('ESCTIP').AsString := oEscola.TPessoa;
+  dstInsert.ParamByName('ESCCPFCNPJ').AsString := oEscola.CPF_CNPJ;
+  dstInsert.ParamByName('ESCCEP').AsInteger := oEscola.CEP;
+  dstInsert.ParamByName('ESCUF').AsString := oEscola.UF;
+  dstInsert.ParamByName('ESCEND').AsString := oEscola.Endereco;
+  dstInsert.ParamByName('ESCNUM').AsString := oEscola.Numero;
+  dstInsert.ParamByName('ESCBAI').AsString := oEscola.Bairro;
+  dstInsert.ParamByName('ESCCID').AsString := oEscola.Cidade;
+  dstInsert.ParamByName('ESCCOMP').AsString := oEscola.Complemento;
+  dstInsert.ParamByName('ESCEMAIL').AsString := oEscola.Email;
+  dstInsert.ParamByName('ESCCONT').AsString := oEscola.Contato;
+  dstInsert.ParamByName('ESCTEL').AsString := oEscola.Telefone;
+  dstInsert.ParamByName('ESCOBS').AsString := oEscola.Observacao;
+  dstInsert.ParamByName('ESCDATCAD').AsString := DateToStr(oEscola.ObterDataCadastro);
+  try
+    dstInsert.ExecSQL();
+    Result := True;
+  except on E: Exception do
+    begin
+    sErro := 'Ocorreu uma falha ao inserir' + sLineBreak + E.Message;
+    Result := False;
+    end;
+ end;
+end;
+
+{$ENDREGION}
+
+{$REGION'METODO ALTERAR'}
+function TdmConexao.Alterar(oEscola: TEscola; out sErro: string): Boolean;
+begin
+  dstUpdate.ParamByName('ESCNOME').AsString := oEscola.Nome;
+  dstUpdate.ParamByName('ESCTIP').AsString := oEscola.TPessoa;
+  dstUpdate.ParamByName('ESCCPFCNPJ').AsString := oEscola.CPF_CNPJ;
+  dstUpdate.ParamByName('ESCCEP').AsInteger := oEscola.CEP;
+  dstUpdate.ParamByName('ESCUF').AsString := oEscola.UF;
+  dstUpdate.ParamByName('ESCEND').AsString := oEscola.Endereco;
+  dstUpdate.ParamByName('ESCNUM').AsString := oEscola.Numero;
+  dstUpdate.ParamByName('ESCBAI').AsString := oEscola.Bairro;
+  dstUpdate.ParamByName('ESCCID').AsString := oEscola.Cidade;
+  dstUpdate.ParamByName('ESCCOMP').AsString := oEscola.Complemento;
+  dstUpdate.ParamByName('ESCEMAIL').AsString := oEscola.Email;
+  dstUpdate.ParamByName('ESCCONT').AsString := oEscola.Contato;
+  dstUpdate.ParamByName('ESCTEL').AsString := oEscola.Telefone;
+  dstUpdate.ParamByName('ESCOBS').AsString := oEscola.Observacao;
+  dstUpdate.ParamByName('ID').AsInteger := oEscola.ID;
+  try
+    dstUpdate.ExecSQL();
+    Result := True;
+  except on E: Exception do
+    begin
+      sErro := 'Ocorreu um erro ao ser alterado' + sLineBreak + E.Message;
+      Result := False;
+    end;
+  end;
+end;
+{$ENDREGION}
+
+{$REGION'METODO EXCLUIR'}
+function TdmConexao.Excluir(iCodigo: Integer; out sErro: string): Boolean;
+begin
+  dstDelete.ParamByName('ID').AsInteger := iCodigo;
+  try
+    dstDelete.ExecSQL();
+    Result := True;
+  except on E: Exception do
+    begin
+    sErro := 'Ocorreu uma falha ao excluir' + sLineBreak + E.Message;
+    Result := False;
+    end;
+  end;
+end;
+{$ENDREGION}
+
+{$REGION'METODO CARREGAR'}
+procedure TdmConexao.CarregarDados(oEscola: TEscola; iCodigo: Integer);
+var
+  sqlEscola : TSQLDataSet;
+begin
+  sqlEscola := TSQLDataSet.Create(nil);
+  try
+    sqlEscola.SQLConnection := sqlConexao;
+    sqlEscola.CommandText := 'select * from ESCOLA where (ID = ' + IntToStr(iCodigo) + ')' ;
+    sqlEscola.Open;
+    with oEscola do
+    begin
+      ID := sqlEscola.FieldByName('ID').AsInteger;
+      Nome := sqlEscola.FieldByName('ESCNOME').AsString;
+      CPF_CNPJ := sqlEscola.FieldByName('ESCCPFCNPJ').AsString;
+      CEP := sqlEscola.FieldByName('ESCCEP').AsInteger;
+      UF := sqlEscola.FieldByName('ESCUF').AsString;
+      Endereco := sqlEscola.FieldByName('ESCEND').AsString;
+      Numero := sqlEscola.FieldByName('ESCNUM').AsString;
+      Bairro := sqlEscola.FieldByName('ESCBAI').AsString;
+      Cidade := sqlEscola.FieldByName('ESCCID').AsString;
+      Complemento := sqlEscola.FieldByName('ESCCOMP').AsString;
+      Email := sqlEscola.FieldByName('ESCEMAIL').AsString;
+      Contato := sqlEscola.FieldByName('ESCCONT').AsString;
+      Telefone := sqlEscola.FieldByName('ESCTEL').AsString;
+      Observacao := sqlEscola.FieldByName('ESCOBS').AsString;
+    end;
+  finally
+  FreeAndNil(sqlEscola);
+  end;
+end;
+
+{$ENDREGION}
+
+{$REGION'METODO PESQUISAR POR CODIGO'}
+procedure TdmConexao.PesquisarCodigo(iCodigo1, iCodigo2: integer);
+begin
+  cdsSelect.Close;
+  cdsSelect.CommandText := 'select * from ESCOLA where ID between ' + IntToStr(iCodigo1) + 'and ' + IntToStr(iCodigo2) + ' order by ID asc';
+  try
+    cdsSelect.Open;
+  except
+//    sErro;
+  end;
+end;
+{$ENDREGION}
+
+{$REGION'METODO PESUISAR POR DATA'}
+procedure TdmConexao.PesquisarData(aDataInicial, aDataFinal: string);
+begin
+if cdsSelect.RecordCount = 0 then
+  begin
+    cdsSelect.Close;
+    cdsSelect.CommandText := 'select * from ESCOLA where ESCDATCAD between' + QuotedStr(aDataInicial) + ' and ' + QuotedStr(aDataFinal) + ' order by ID';
+    cdsSelect.Open;
+  end
+end;
+{$ENDREGION}
+
+end.

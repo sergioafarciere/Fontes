@@ -28,6 +28,7 @@ implementation
 
 procedure TfrmPesqEscola.btnPesquisarClick(Sender: TObject);
 begin
+inherited;
   case rdgFiltroPesquisa.ItemIndex of
   0 : pesquisaCodigo;
   1 : pesquisaData;
@@ -44,7 +45,6 @@ begin
   finally
     FreeAndNil(oEscolaController);            
   end;
-
 end;
 
 procedure TfrmPesqEscola.pesquisaData;

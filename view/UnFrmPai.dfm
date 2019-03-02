@@ -201,6 +201,7 @@ object frmPai: TfrmPai
       Font.Style = []
       ParentFont = False
       TabOrder = 5
+      OnClick = btnSairClick
     end
     object btnGravar: TBitBtn
       Left = 511
@@ -226,7 +227,6 @@ object frmPai: TfrmPai
     TabOrder = 16
   end
   object edtCodigo: TEdit
-    Tag = 1
     Left = 30
     Top = 86
     Width = 65
@@ -243,6 +243,7 @@ object frmPai: TfrmPai
     Height = 21
     CharCase = ecUpperCase
     TabOrder = 2
+    OnExit = CampoObrigatorio
   end
   object cbxTipoPessoa: TComboBox
     Tag = 1
@@ -251,9 +252,11 @@ object frmPai: TfrmPai
     Width = 92
     Height = 21
     CharCase = ecUpperCase
+    ImeMode = imHanguel
     ItemHeight = 13
     TabOrder = 1
     OnChange = mascaraCPFCNPJ
+    OnExit = CampoObrigatorio
     Items.Strings = (
       'F'#205'SICA'
       'JURIDICA')
@@ -268,6 +271,7 @@ object frmPai: TfrmPai
     EditMask = '999.999.999-99;0;_'
     MaxLength = 14
     TabOrder = 3
+    OnExit = CampoObrigatorio
   end
   object mskCEP: TMaskEdit
     Tag = 1
@@ -279,6 +283,7 @@ object frmPai: TfrmPai
     EditMask = '99999-999;0;_'
     MaxLength = 9
     TabOrder = 4
+    OnExit = CampoObrigatorio
   end
   object cbxUF: TComboBox
     Tag = 1
@@ -289,6 +294,7 @@ object frmPai: TfrmPai
     CharCase = ecUpperCase
     ItemHeight = 13
     TabOrder = 5
+    OnExit = CampoObrigatorio
     Items.Strings = (
       'AC'
       'AL'
@@ -326,6 +332,7 @@ object frmPai: TfrmPai
     Height = 21
     CharCase = ecUpperCase
     TabOrder = 6
+    OnExit = CampoObrigatorio
   end
   object edtNumero: TEdit
     Tag = 1
@@ -335,6 +342,7 @@ object frmPai: TfrmPai
     Height = 21
     CharCase = ecUpperCase
     TabOrder = 7
+    OnExit = CampoObrigatorio
   end
   object edtBairro: TEdit
     Tag = 1
@@ -344,6 +352,7 @@ object frmPai: TfrmPai
     Height = 21
     CharCase = ecUpperCase
     TabOrder = 8
+    OnExit = CampoObrigatorio
   end
   object edtCidade: TEdit
     Tag = 1
@@ -353,8 +362,10 @@ object frmPai: TfrmPai
     Height = 21
     CharCase = ecUpperCase
     TabOrder = 9
+    OnExit = CampoObrigatorio
   end
   object edtComplemento: TEdit
+    Tag = 1
     Left = 139
     Top = 180
     Width = 355
@@ -363,6 +374,7 @@ object frmPai: TfrmPai
     TabOrder = 10
   end
   object edtEmail: TEdit
+    Tag = 1
     Left = 497
     Top = 180
     Width = 193
@@ -371,6 +383,7 @@ object frmPai: TfrmPai
     TabOrder = 11
   end
   object edtContato: TEdit
+    Tag = 1
     Left = 30
     Top = 227
     Width = 121
@@ -379,6 +392,7 @@ object frmPai: TfrmPai
     TabOrder = 12
   end
   object mmoObservacoes: TMemo
+    Tag = 1
     Left = 30
     Top = 283
     Width = 660
@@ -386,6 +400,7 @@ object frmPai: TfrmPai
     TabOrder = 14
   end
   object mskTelefone: TMaskEdit
+    Tag = 1
     Left = 154
     Top = 227
     Width = 87

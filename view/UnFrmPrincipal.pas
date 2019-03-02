@@ -105,7 +105,10 @@ end;
 
 procedure TfrmPrincipal.tmSairPrincipalClick(Sender: TObject);
 begin
-  Close;
+  if MessageDlg('Deseja realmente sair?',mtConfirmation,[mbYes,mbNo],0) = IDYES then
+  begin
+    Close;
+  end;
 end;
 
 end.
