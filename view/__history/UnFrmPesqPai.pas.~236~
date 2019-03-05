@@ -94,7 +94,7 @@ procedure TfrmPesqPai.NavegarEnter(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-//  key := #0;
+  key := #0;
     Perform(WM_NEXTDLGCTL,0,0);
   end
 end;
@@ -155,7 +155,7 @@ begin
     TEdit(Sender).SetFocus;
   end
   else
-  NavegarEnter(Sender,Key);
+    Perform(WM_NEXTDLGCTL,1,1);
 end;
 
 

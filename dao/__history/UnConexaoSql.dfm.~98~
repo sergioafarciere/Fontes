@@ -28,7 +28,6 @@ object dmConexao: TdmConexao
   end
   object dstSelect: TSQLDataSet
     SchemaName = 'dbo'
-    Active = True
     CommandText = 'select * from ESCOLA'
     DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1

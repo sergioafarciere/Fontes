@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UnFrmPesqPai, StdCtrls, Buttons, UnModelEscola, UnControllerEscola,
-  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls, UnConexaoSql;
+  Grids, DBGrids, FMTBcd, DB, SqlExpr, Mask, ExtCtrls, ComCtrls;
 
 type
   TfrmPesqEscola = class(TfrmPesqPai)
     procedure btnPesquisarClick(Sender: TObject);
+    procedure DuploClick(Sender: TObject);
   private
     procedure pesquisaCodigo;
     procedure pesquisaData;
@@ -21,6 +22,8 @@ var
   frmPesqEscola: TfrmPesqEscola;
 
 implementation
+
+uses UnFrmCadEscola;
 
 {$R *.dfm}
 
@@ -35,10 +38,22 @@ inherited;
   end;
 end;
 
+
+procedure TfrmPesqEscola.DuploClick(Sender: TObject);
+var
+  frmEscola : TfrmCadEscola;
+  begin
+  frmEscola := TfrmCadEscola.Create(nil);
+  try
+    ShowMessage(DBGrid1.DataSource.DataSet.FieldByName('ID').AsString);
+  finally
+  FreeAndNil(frmEscola);
+  end;
+end;
+
 procedure TfrmPesqEscola.pesquisaCodigo;
 var
   oEscolaController : TEscolaController;
-  sErro : string;
 begin
   oEscolaController := TEscolaController.Create;
   try
@@ -46,7 +61,6 @@ begin
   finally
     FreeAndNil(oEscolaController);            
   end;
-
 end;
 
 procedure TfrmPesqEscola.pesquisaData;

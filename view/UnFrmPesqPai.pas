@@ -101,7 +101,7 @@ end;
 
 procedure TfrmPesqPai.SomenteNumeros(Sender: TObject; var Key: Char);
 begin
-  if not (Key in ['0'..'9', #8, #13]) then
+  if not (Key in ['1'..'9', #8, #13]) then
   begin
    key := #0;
    MessageDlg('Somente Números',mtWarning,[mbOK],0);

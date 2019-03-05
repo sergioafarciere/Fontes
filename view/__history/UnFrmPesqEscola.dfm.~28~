@@ -6,6 +6,9 @@ inherited frmPesqEscola: TfrmPesqEscola
   ExplicitHeight = 551
   PixelsPerInch = 96
   TextHeight = 13
+  inherited DBGrid1: TDBGrid
+    ImeMode = imDisable
+  end
   inherited pnlPesquisaTop: TPanel
     Width = 775
     Caption = 'Pesquisa de Escola'

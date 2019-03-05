@@ -9,14 +9,13 @@ uses
 
 type
   TfrmCadEscola = class(TfrmPai)
+    Label1: TLabel;
     procedure btnNovoClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
-    procedure btnSairClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure ConsultandoEscola(Sender: TObject; var Key: Char);
     procedure btnExcluirClick(Sender: TObject);
-    procedure edtCodigoChange(Sender: TObject);
   private
     procedure Novo;
     procedure Alterar;
@@ -37,6 +36,7 @@ procedure TfrmCadEscola.ConsultandoEscola(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) and (edtCodigo.Text = EmptyStr) then
     begin
+    Key := #0;
     ShowMessage('Insira um código.');
   end;
   if (Key = #13) and (edtCodigo.Text <> EmptyStr)  then
@@ -88,11 +88,6 @@ begin
   habilitarComandos(opIncluir);
 end;
 
-procedure TfrmCadEscola.btnSairClick(Sender: TObject);
-begin
-  Close;
-end;
-
 procedure TfrmCadEscola.Novo;
 var
   oEscola : TEscola;
@@ -102,6 +97,7 @@ begin
   oEscolaController := TEscolaController.Create;
   try
     FOperacao := opIncluir;
+    limparCampos;
     edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
   finally
   FreeAndNil(oEscola);

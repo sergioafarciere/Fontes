@@ -20,10 +20,12 @@ type
     procedure Novo;
     procedure Alterar;
     procedure Gravar;
-    procedure CarregarEscola;
+//    procedure CarregarEscola;
     procedure Insert;
     procedure Update;
     procedure Delete;
+  public
+    procedure CarregarEscola;
   end;
 var
   frmCadEscola: TfrmCadEscola;

@@ -50,25 +50,25 @@ var
   oEscolaController := TEscolaController.Create;
   try
     oEscolaController.CarregarEscola(oEscola,StrToInt(DBGrid1.DataSource.DataSet.FieldByName('ID').AsString));
-    frmEscola.edtCodigo.Text := IntToStr(oEscola.ID);
-    frmEscola.edtNome.Text := oEscola.Nome;
-    frmEscola.cbxTipoPessoa.Text := oEscola.TPessoa;
-    frmEscola.mskCPFCNPJ.Text := oEscola.CPF_CNPJ;
-    frmEscola.mskCEP.Text := IntToStr(oEscola.CEP);
-    frmEscola.cbxUF.Text := oEscola.UF;
-    frmEscola.edtEndereco.Text := oEscola.Endereco;
-    frmEscola.edtNumero.Text := oEscola.Numero;
-    frmEscola.edtBairro.Text := oEscola.Bairro;
-    frmEscola.edtCidade.Text := oEscola.Cidade;
-    frmEscola.edtComplemento.Text := oEscola.Complemento;
-    frmEscola.edtEmail.Text := oEscola.Email;
-    frmEscola.edtContato.Text := oEscola.Contato;
-    frmEscola.mskTelefone.Text := oEscola.Telefone;
-    frmEscola.mmoObservacoes.Text := oEscola.Observacao;
     frmEscola.ShowModal;
+    edtCodigo.Text := IntToStr(oEscola.ID);
+    edtNome.Text := oEscola.Nome;
+    cbxTipoPessoa.Text := oEscola.TPessoa;
+    mskCPFCNPJ.Text := oEscola.CPF_CNPJ;
+    mskCEP.Text := IntToStr(oEscola.CEP);
+    cbxUF.Text := oEscola.UF;
+    edtEndereco.Text := oEscola.Endereco;
+    edtNumero.Text := oEscola.Numero;
+    edtBairro.Text := oEscola.Bairro;
+    edtCidade.Text := oEscola.Cidade;
+    edtComplemento.Text := oEscola.Complemento;
+    edtEmail.Text := oEscola.Email;
+    edtContato.Text := oEscola.Contato;
+    mskTelefone.Text := oEscola.Telefone;
+    mmoObservacoes.Text := oEscola.Observacao;
   finally
-  FreeAndNil(frmEscola);
-  FreeAndNil(oEscola);
+  FreeAndNil(frmEscola)
+  FreeAndNil(oEscola)
   FreeAndNil(oEscolaController);
   end;
 end;

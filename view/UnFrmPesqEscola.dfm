@@ -8,6 +8,7 @@ inherited frmPesqEscola: TfrmPesqEscola
   TextHeight = 13
   inherited DBGrid1: TDBGrid
     ImeMode = imDisable
+    OnDblClick = DuploClick
   end
   inherited pnlPesquisaTop: TPanel
     Width = 775
@@ -21,8 +22,5 @@ inherited frmPesqEscola: TfrmPesqEscola
     Width = 775
     ExplicitTop = 496
     ExplicitWidth = 775
-  end
-  inherited btnPesquisar: TBitBtn
-    OnClick = btnPesquisarClick
   end
 end

@@ -30,9 +30,6 @@ inherited frmCadEscola: TfrmCadEscola
     inherited btnCancelar: TBitBtn
       OnClick = btnCancelarClick
     end
-    inherited btnSair: TBitBtn
-      OnClick = btnSairClick
-    end
     inherited btnGravar: TBitBtn
       OnClick = btnGravarClick
     end
