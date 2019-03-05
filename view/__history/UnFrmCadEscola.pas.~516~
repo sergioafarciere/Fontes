@@ -9,21 +9,24 @@ uses
 
 type
   TfrmCadEscola = class(TfrmPai)
+    Label1: TLabel;
     procedure btnNovoClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
-    procedure btnSairClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure ConsultandoEscola(Sender: TObject; var Key: Char);
     procedure btnExcluirClick(Sender: TObject);
+    procedure CampoObrigatorio(Sender: TObject);
   private
     procedure Novo;
     procedure Alterar;
     procedure Gravar;
-    procedure CarregarEscola;
+//    procedure CarregarEscola;
     procedure Insert;
     procedure Update;
     procedure Delete;
+  public
+    procedure CarregarEscola;
   end;
 var
   frmCadEscola: TfrmCadEscola;
@@ -88,11 +91,6 @@ begin
   habilitarComandos(opIncluir);
 end;
 
-procedure TfrmCadEscola.btnSairClick(Sender: TObject);
-begin
-  Close;
-end;
-
 procedure TfrmCadEscola.Novo;
 var
   oEscola : TEscola;
@@ -102,6 +100,7 @@ begin
   oEscolaController := TEscolaController.Create;
   try
     FOperacao := opIncluir;
+    limparCampos;
     edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
   finally
   FreeAndNil(oEscola);
@@ -125,7 +124,13 @@ end;
 
 {$region'OBTER DADOS PARA METODOS CRUD'}
 //CARREGAR DADOS
-procedure TfrmCadEscola.CarregarEscola;
+pprocedure TfrmCadEscola.CampoObrigatorio(Sender: TObject);
+begin
+  inherited;
+
+end;
+
+rocedure TfrmCadEscola.CarregarEscola;
 var
   oEscola : TEscola;
   oEscolaController : TEscolaController;

@@ -65,6 +65,7 @@ inherited frmCadEscola: TfrmCadEscola
   end
   inherited mskCPFCNPJ: TMaskEdit
     Top = 85
+    OnEnter = ValidandoTamanho
     ExplicitTop = 85
   end
   inherited edtEmail: TEdit

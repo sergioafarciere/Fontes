@@ -9,21 +9,24 @@ uses
 
 type
   TfrmCadEscola = class(TfrmPai)
+    Label1: TLabel;
     procedure btnNovoClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
-    procedure btnSairClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure ConsultandoEscola(Sender: TObject; var Key: Char);
     procedure btnExcluirClick(Sender: TObject);
+    procedure ValidandoTamanho(Sender: TObject);
   private
     procedure Novo;
     procedure Alterar;
     procedure Gravar;
-    procedure CarregarEscola;
+//    procedure CarregarEscola;
     procedure Insert;
     procedure Update;
     procedure Delete;
+  public
+    procedure CarregarEscola;
   end;
 var
   frmCadEscola: TfrmCadEscola;
@@ -31,7 +34,7 @@ var
 implementation
 
 {$R *.dfm}
-{$REGION'KEYPRESS'}
+{$REGION'CONTROLE DE TELA'}
 procedure TfrmCadEscola.ConsultandoEscola(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) and (edtCodigo.Text = EmptyStr) then
@@ -45,6 +48,17 @@ begin
     edtCodigo.SetFocus;
   end;
 end;
+
+
+procedure TfrmCadEscola.ValidandoTamanho(Sender: TObject);
+begin
+  if (cbxTipoPessoa.ItemIndex = 0) and (Length(mskCPFCNPJ.Text) <> 11) then
+    ShowMessage('Quantidade inválida');
+end;
+
+
+
+
 {$ENDREGION}
 
 
@@ -88,11 +102,6 @@ begin
   habilitarComandos(opIncluir);
 end;
 
-procedure TfrmCadEscola.btnSairClick(Sender: TObject);
-begin
-  Close;
-end;
-
 procedure TfrmCadEscola.Novo;
 var
   oEscola : TEscola;
@@ -102,8 +111,8 @@ begin
   oEscolaController := TEscolaController.Create;
   try
     FOperacao := opIncluir;
-    edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
     limparCampos;
+    edtCodigo.Text := IntToStr(oEscolaController.RetornarId);
   finally
   FreeAndNil(oEscola);
   FreeAndNil(oEscolaController);

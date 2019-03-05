@@ -33,7 +33,7 @@ var
 implementation
 
 {$R *.dfm}
-{$REGION'KEYPRESS'}
+{$REGION'CONTROLE DE TELA'}
 procedure TfrmCadEscola.ConsultandoEscola(Sender: TObject; var Key: Char);
 begin
   if (Key = #13) and (edtCodigo.Text = EmptyStr) then
@@ -47,6 +47,10 @@ begin
     edtCodigo.SetFocus;
   end;
 end;
+
+
+
+
 {$ENDREGION}
 
 

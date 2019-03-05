@@ -240,17 +240,18 @@ end;
 
 procedure TfrmPai.CampoObrigatorio(Sender: TObject);
 begin
-  if FOperacao = opNavegar then
+  if FOperacao = opIncluir then
     begin
-      Abort;
-    end
-  else if (Trim(TEdit(Sender).Text) = EmptyStr) or (Trim(TMaskEdit(Sender).Text) = EmptyStr) then
-  begin
-    MessageDlg('Campo obrigatório!',mtInformation,[mbOK],0);
-    TEdit(Sender).SetFocus;
-  end
-  else
-    Perform(WM_NEXTDLGCTL,1,1);
+      if (Trim(TEdit(Sender).Text) = EmptyStr) or (Trim(TMaskEdit(Sender).Text) = EmptyStr) then
+      begin
+        MessageDlg('Campo obrigatório!',mtInformation,[mbOK],0);
+        TEdit(Sender).SetFocus;
+      end
+      else
+        Perform(WM_NEXTDLGCTL,1,1);
+    end;
+  if FOperacao = opNavegar then
+    Abort;
 end;
 
 

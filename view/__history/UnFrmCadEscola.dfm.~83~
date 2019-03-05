@@ -1,0 +1,63 @@
+inherited frmCadEscola: TfrmCadEscola
+  Caption = 'Cadastro de Escola'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlTopPai: TPanel
+    BiDiMode = bdRightToLeft
+    ParentBiDiMode = False
+    object Label1: TLabel [0]
+      Left = 226
+      Top = 18
+      Width = 142
+      Height = 21
+      Caption = 'Cadastro de Escola'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    inherited btnNovo: TBitBtn
+      Left = 403
+      Top = 8
+      Height = 40
+      OnClick = btnNovoClick
+      ExplicitLeft = 403
+      ExplicitTop = 8
+      ExplicitHeight = 40
+    end
+    inherited btnAlterar: TBitBtn
+      Left = 459
+      Top = 8
+      Width = 53
+      Height = 39
+      OnClick = btnAlterarClick
+      ExplicitLeft = 459
+      ExplicitTop = 8
+      ExplicitWidth = 53
+      ExplicitHeight = 39
+    end
+    inherited btnExcluir: TBitBtn
+      OnClick = btnExcluirClick
+    end
+    inherited btnCancelar: TBitBtn
+      OnClick = btnCancelarClick
+    end
+    inherited btnGravar: TBitBtn
+      OnClick = btnGravarClick
+    end
+  end
+  inherited edtCodigo: TEdit
+    Left = 27
+    OnKeyPress = ConsultandoEscola
+    ExplicitLeft = 27
+  end
+  inherited mskCPFCNPJ: TMaskEdit
+    Top = 85
+    ExplicitTop = 85
+  end
+  inherited edtEmail: TEdit
+    CharCase = ecNormal
+  end
+end

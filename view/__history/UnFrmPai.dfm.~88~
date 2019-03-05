@@ -133,8 +133,8 @@ object frmPai: TfrmPai
     Align = alTop
     TabOrder = 15
     object btnNovo: TBitBtn
-      Left = 307
-      Top = 1
+      Left = 260
+      Top = 24
       Width = 72
       Height = 24
       Caption = '&NOVO'
@@ -165,8 +165,8 @@ object frmPai: TfrmPai
         1F353434343434342A070B37373737371F212121211F1F211C0637373737}
     end
     object btnAlterar: TBitBtn
-      Left = 378
-      Top = 1
+      Left = 338
+      Top = 24
       Width = 72
       Height = 24
       Caption = '&ALTERAR'
@@ -222,8 +222,8 @@ object frmPai: TfrmPai
         3F3F3F3F39111616191919193334343434333334270D19191919}
     end
     object btnExcluir: TBitBtn
-      Left = 520
-      Top = 1
+      Left = 494
+      Top = 24
       Width = 72
       Height = 24
       Caption = '&EXCLUIR'
@@ -248,8 +248,8 @@ object frmPai: TfrmPai
         04040404040404040404040404040404040404040404}
     end
     object btnCancelar: TBitBtn
-      Left = 591
-      Top = 1
+      Left = 572
+      Top = 24
       Width = 79
       Height = 24
       Caption = '&CANCELAR'
@@ -289,8 +289,8 @@ object frmPai: TfrmPai
         98F42F87F0116CE6075FDCFF00FFFF00FFFF00FFFF00FFFF00FF}
     end
     object btnSair: TBitBtn
-      Left = 669
-      Top = 1
+      Left = 572
+      Top = 0
       Width = 69
       Height = 24
       Caption = '&SAIR'
@@ -331,8 +331,8 @@ object frmPai: TfrmPai
         4B4B4E1E1FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     end
     object btnGravar: TBitBtn
-      Left = 449
-      Top = 1
+      Left = 416
+      Top = 24
       Width = 72
       Height = 24
       Caption = '&GRAVAR'
